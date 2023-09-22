@@ -1,0 +1,10 @@
+{
+    "persons": [
+        {
+            "id": 1,
+            "maxActions": 5,
+            "date": "1/03/2023",
+            "actionsAllowed": 3
+        }
+    ]
+}
