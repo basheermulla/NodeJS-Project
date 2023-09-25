@@ -8,8 +8,8 @@ const url = 'https://jsonplaceholder.typicode.com/users';
 /*** Create, Read, Update, Delete ***/
 
 // GET - Get All Users - Read
-const getAllUsers = (amount = '') => {
-    return axios.get(`${url}?_limit=${amount}`)
+const getAllUsers = () => {
+    return axios.get(`${url}`)
 };
 
 // GET - Get Address By Id - Read

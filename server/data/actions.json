@@ -1,5 +1,5 @@
 {
-    "persons": [
+    "actions": [
         {
             "id": 1,
             "maxActions": 5,

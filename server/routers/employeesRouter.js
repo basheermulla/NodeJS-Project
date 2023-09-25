@@ -15,8 +15,6 @@ router.get('/', (req, res) => {
 
     const { ACCESS_SECRET_TOKEN } = process.env;
 
-    console.log(ACCESS_SECRET_TOKEN);
-
     jwt.verify(token, ACCESS_SECRET_TOKEN, (err, data) => {
         if (err) {
             res.status(500).send('Fail to authenticate token') 
