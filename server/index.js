@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require("dotenv").config();
 const connectDB = require('./config/db');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 
 // Use configuration files
 const { API_PORT } = process.env;
@@ -12,6 +14,10 @@ const port = process.env.PORT || API_PORT;
 
 // Connect Database
 connectDB();
+
+// creating 24 hours from milliseconds
+const oneDay = 1000 * 60 * 60 * 24;
+const { SECRET } = process.env;
 
 /********************************//* Middlewares *//********************************/
 // Cross-Origin Resource Sharing (CORS) is a mechanism 
@@ -21,12 +27,27 @@ app.use(cors());
 // built in middleware function in Express starting from v4.16.0. 
 // It parses incoming JSON requests and puts the parsed data in req.body
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
+//serving public file
+app.use(express.static(__dirname));
+
+// cookie parser middleware
+app.use(cookieParser());
 
 // Parse incoming request bodies in a middleware before the handlers, 
 // available under the 'req.body' property
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
+}));
+
+// Create a session middleware
+app.use(sessions({
+    secret: SECRET,
+    saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false
 }));
 
 /*************************//* Routers - Logic goes here *//*************************/
@@ -36,10 +57,6 @@ app.use('/auth', authRouter);
 
 const employeesRouter = require('./routers/employeesRouter');
 app.use('/employees', employeesRouter);
-
-app.get('/', function (req, res) {
-    res.send('Hello World')
-})
 
 // server listening
 app.listen(port, () => {

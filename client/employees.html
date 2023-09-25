@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Employees Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</head>
+
 <body onload="getEmployees()">
-    <h1> Employees Page </h1>
+
+    <div class="container">
+        <span class="d-block p-1"></span>
+        <span class="d-block p-5 bg-primary-subtle"></span>
+        <span class="d-block p-2 bg-primary-subtle">
+            <div class="d-inline p-2">
+                <span class="font-size-16" id="userFullName"></span>
+                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+            </div>
+        </span>
+        <h2 class="p-2"> Employees </span></h2>
+        <span class="d-block p-2"></span>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th style="width: 40px;">ID</th>
+                    <th>Name</th>
+                    <th>Director</th>
+                    <th>Premiered Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" onclick="logOut()"> Login </button>
+        </div>
+    </div>
 
     <script>
-        const url = 'http://localhost:3000/employees'
+        const url = 'http://localhost:3000/'
+
+        // Show Full Name and "Log Out" link in the head of this page
+        const uName = document.getElementById('userFullName');
+        uName.innerText = "Hello, " + sessionStorage['username']
+
+        // Get Employees and display them in a table
         const getEmployees = async () => {
+
             const accessToken = sessionStorage['accessToken'];
-            
-            const resp = await fetch(url, {
+
+            const resp = await fetch(url + 'employees', {
                 method: 'GET',
                 headers: { 'x-access-token': accessToken }
             });
@@ -16,6 +66,18 @@
             const data = await resp.json();
             console.log(data);
         }
+
+        const logOut = async () => {
+            const accessToken = sessionStorage['accessToken'];
+
+            const resp = await fetch(url + 'auth/logout');
+
+            const data = await resp.text();
+            console.log(data);
+    
+            location.href = './login.html';
+        }
     </script>
 </body>
+
 </html>

@@ -1,23 +1,23 @@
 const jFile = require('jsonfile');
 
-const file = 'data/users.json'
+const file = 'data/actions.json'
 
 /*** Json File CRUD ***/
-/*** For Phone ***/
+/*** For Actions ***/
 /***provided from a Local "jsonfile" ***/
-/*** Create, Read, Update, Delete ***/
+/*** Read, Write ***/
 
 // Read - Get All Phones from a json file
-const getPhones = () => {
+const getActions = () => {
     return jFile.readFile(file)
 };
 
 // Write - Write Phones to a json file
-const setPhones = (data) => {
+const setAction = (data) => {
     return jFile.writeFile(file, data);
 };
 
 module.exports = {
-    getPhones,
-    setPhones
+    getActions,
+    setAction
 };

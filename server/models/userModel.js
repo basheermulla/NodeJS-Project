@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const usersSchema = new Schema({
   FullName: { type: String, default: null },
   NumOfActions: { type: Number, required: true },
+  ExternalID: { type: Number, required: true }
 },
   { versionKey: false }
 );
