@@ -16,9 +16,9 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="getEmployees()">
+<body onload="getEmployees()" id="body">
 
-    <div class="container">
+    <div class="container" id="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
         <span class="d-block p-2 bg-primary-subtle">
@@ -28,21 +28,33 @@
             </div>
         </span>
         <h2 class="p-2"> Employees </span></h2>
+
+        <div class="mb-3">
+            <label class="form-label"> Display employees by depatment: </label>
+            <select class="form-select" id="filter-select" aria-label="Default select example" onchange="myFilter2()">
+                <option selected> All departments </option>
+            </select>
+        </div>
+        <div class="input-group data-filter">
+            <span class="input-group-text">&#x1F50E;&#xFE0E;</span>
+            <input type="text" class="form-control" placeholder="Display employees by depatment" onkeyup="myFilter()"
+                id="myFilterInput">
+        </div>
         <span class="d-block p-2"></span>
-        <table class="table table-bordered table-hover">
-            <thead>
+        <table id="theFilterTable" class="table table-bordered table-hover">
+            <thead id="table-head">
                 <tr class="table-primary">
                     <th style="width: 40px;">ID</th>
-                    <th>Name</th>
-                    <th>Director</th>
-                    <th>Premiered Year</th>
-                    <th>Actions</th>
+                    <th>Full Name</th>
+                    <th>Department</th>
+                    <th>Department</th>
                 </tr>
             </thead>
             <tbody id="table-body"></tbody>
         </table>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary" onclick="logOut()"> Login </button>
+            <button type="submit" class="btn btn-primary" onclick="AddNewEmployee()"> New Employee </button>
+            <button type="submit" class="btn btn-secondary" onclick="goDepartment()"> Go to Department Page </button>
         </div>
     </div>
 
@@ -55,16 +67,161 @@
 
         // Get Employees and display them in a table
         const getEmployees = async () => {
-
+            // Get aaccess Token client
             const accessToken = sessionStorage['accessToken'];
 
-            const resp = await fetch(url + 'employees', {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            // Set the employees array into the table-body
+            const tableBody = document.getElementById('table-body');
+
+            // Get the list of employees
+            const resp_emp = await fetch(url + 'employees', {
                 method: 'GET',
                 headers: { 'x-access-token': accessToken }
             });
+            // Resposne from employees router
+            const employees = await resp_emp.json();
+            console.log(employees);
 
-            const data = await resp.json();
-            console.log(data);
+            // Get all depatments
+            const resp_dep = await fetch(url + 'departments', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+            // Response from departments router
+            const departments = await resp_dep.json();
+            console.log(departments);
+
+            // Create options select
+            const select = document.getElementById("filter-select");
+
+            for (let i = 0; i < departments.length; i++) {
+                const option = document.createElement("option");
+                option.textContent = departments[i].Name;
+                option.value = departments[i].Name;
+                select.appendChild(option);
+            };
+
+            tableBody.innerHTML = "";
+            let index = 1;
+            employees.forEach(employee => {
+                // table row
+                const tr = tableBody.insertRow();
+
+                // 'Id' - 'td' column
+                const tdId = tr.insertCell();
+                tdId.innerText = index++;
+
+                // 'Full Name' - 'td' column
+                const tdFullName = tr.insertCell();
+                const nameLink = document.createElement('a');
+                nameLink.href = './editEmployees.html';
+                nameLink.onclick = () => sessionStorage.setItem('employeeId', employee._id);
+                nameLink.innerText = employee.firstName + ' ' + employee.lastName;
+                tdFullName.appendChild(nameLink);
+
+                // 'Department' - 'td' column
+                const tdDepartment = tr.insertCell();
+                const dapartmentLink = document.createElement('a');
+                dapartmentLink.href = './editDepartment.html';
+                dapartmentLink.onclick = () => sessionStorage.setItem('departmentId', employee.departmentID);
+                const Department_Name = departments.find(dapartment => dapartment._id === employee.departmentID)
+                dapartmentLink.innerText = Department_Name.Name;
+                tdDepartment.appendChild(dapartmentLink);
+
+                // 'List Of Shifts' - 'td' column
+                const tdShifts = tr.insertCell();
+                tdShifts.innerText = employee.startWorkYear;
+            });
+        }
+
+        const myFilter = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const input = document.getElementById("myFilterInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("theFilterTable");
+            const tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                const td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        const myFilter2 = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+            
+            let selectElement = document.querySelector('#filter-select');
+            const filter = selectElement.value.toUpperCase();
+            const table = document.getElementById("theFilterTable");
+            const tr = table.getElementsByTagName("tr");
+            const notFilter = 'All departments';
+            if (filter !== notFilter.toUpperCase()) {
+                for (i = 0; i < tr.length; i++) {
+                    const td = tr[i].getElementsByTagName("td")[2];
+                    if (td) {
+                        const txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            } else {
+                for (i = 0; i < tr.length; i++) {
+                    tr[i].style.display = "";
+                }
+            }
+
+        }
+
+        // Add new employee
+        const AddNewEmployee = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './newEmployees.html';
+        }
+
+        // Redirect to departments page
+        const goDepartment = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './departments.html';
         }
 
         const logOut = async () => {
@@ -72,9 +229,14 @@
 
             const resp = await fetch(url + 'auth/logout');
 
+            const actions_Calc = await fetch(url);
+
+            const result = await actions_Calc.text();
+            console.log(result);
+
             const data = await resp.text();
             console.log(data);
-    
+
             location.href = './login.html';
         }
     </script>
