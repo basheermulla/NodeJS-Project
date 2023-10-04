@@ -1,12 +1,12 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const employeesBLL = require('../BLL/employeesBLL');
+const departmentsBLL = require('../BLL/departmentsBLL');
 
 const router = express.Router();
 
-// Entry Point: http://localhost:3000/employees
+// Entry Point: http://localhost:3000/departments
 
-// Get All Employees
+// Get All Departments
 router.get('/', (req, res) => {
     const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
@@ -21,11 +21,11 @@ router.get('/', (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ********************** Get All Employees *******
+        // The User has been Authorized ********************** Get All Departments *******
         try {
-            const employees = await employeesBLL.getAllEmployees();
-            //const employees = [ {FirstName: 'Basheer'}, {LastName: 'Mulla'} ];
-            res.send(employees);
+            const departments = await departmentsBLL.getAllDepartments();
+            //const departments = [ {FirstName: 'Basheer'}, {LastName: 'Mulla'} ];
+            res.send(departments);
         } catch (error) {
             console.error(error);
             res.status(500).send(error);
@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET - Get Employee By Id
+// GET - Get Department By Id
 router.get('/:id', async (req, res) => {
     const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
@@ -49,11 +49,11 @@ router.get('/:id', async (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ******************** GET - Get Employee By Id **
+        // The User has been Authorized ******************** GET - Get Department By Id **
         try {
             const { id } = req.params;
-            const Employee = await employeesBLL.getEmployeeById(id);
-            res.send(Employee);
+            const department = await departmentsBLL.getDepartmentById(id);
+            res.send(department);
         } catch (error) {
             console.error(error);
             res.status(500).send(error);
@@ -62,9 +62,10 @@ router.get('/:id', async (req, res) => {
     });
 });
 
-// POST - Create an Employee
+// POST - Create a Department
 router.post('/', async (req, res) => {
     const token = req.headers['x-access-token'];
+    //console.log(token)
     // If 'username' and 'password' are exist in DB:
     if (!token) {
         res.status(401).send('No token provided') // Unauthorized
@@ -77,12 +78,12 @@ router.post('/', async (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ******************** POST - Create an Employee *
+        // The User has been Authorized ******************** POST - Create a Department *
         try {
-            const { firstName, lastName, startWorkYear } = req.body; // Not in use
+            //const { firstName, lastName, startWorkYear } = req.body; // Not in use
             const obj = req.body; // In use
-            console.log (obj)
-            const result = await employeesBLL.addEmployee(obj);
+            console.log(obj)
+            const result = await departmentsBLL.addDepartment(obj);
             res.status(201).send(result);
         } catch (error) {
             console.error(error);
@@ -92,7 +93,7 @@ router.post('/', async (req, res) => {
     });
 });
 
-// PUT - Update an Employee
+// PUT - Update a Department
 router.put('/:id', async (req, res) => {
     const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
@@ -107,11 +108,11 @@ router.put('/:id', async (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ******************** PUT - Update an Employee **
+        // The User has been Authorized ******************** PUT - Update a Department **
         try {
             const { id } = req.params;
             const obj = req.body;
-            const result = await employeesBLL.updateEmployee(id, obj, { new: true });
+            const result = await departmentsBLL.updateDepartment(id, obj, { new: true });
             res.send(result);
         } catch (error) {
             console.error(error);
@@ -121,7 +122,7 @@ router.put('/:id', async (req, res) => {
     });
 });
 
-// DELETE - Delete an Employee
+// DELETE - Delete a Department
 router.delete('/:id', async (req, res) => {
     const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
@@ -136,10 +137,10 @@ router.delete('/:id', async (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ****************** DELETE - Delete an Employee *
+        // The User has been Authorized ****************** DELETE - Delete a Department *
         try {
             const { id } = req.params;
-            const result = await employeesBLL.deleteEmployee(id);
+            const result = await departmentsBLL.deleteDepartment(id);
             res.send(result);
         } catch (error) {
             console.error(error);

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const departmentsSchema = new Schema({
     Name: { type: String, required: true },
-    Manager: [{ type: Schema.Types.ObjectId, ref: 'Employee' }]
+    Manager: { type: Schema.Types.ObjectId, ref: 'Employee' }
 },
     { versionKey: false }
 );
