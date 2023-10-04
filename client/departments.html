@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Employees Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</head>
+
+<body onload="getDepartments()">
+
+    <div class="container">
+        <span class="d-block p-1"></span>
+        <span class="d-block p-5 bg-primary-subtle"></span>
+        <span class="d-block p-2 bg-primary-subtle">
+            <div class="d-inline p-2">
+                <span class="font-size-16" id="userFullName"></span>
+                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+            </div>
+        </span>
+        <h2 class="p-2"> Departments </span></h2>
+        <span class="d-block p-2"></span>
+
+        <table class="table table-bordered table-hover">
+            <thead id="table-head"></thead>
+            <tbody id="table-body"></tbody>
+        </table>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" onclick="AddNewDepartment()"> New Department </button>
+            <button type="submit" class="btn btn-secondary" onclick="goEmployee()"> Go to Employees Page </button>
+        </div>
+    </div>
+
+    <script>
+        const url = 'http://localhost:3000/'
+
+        // Show Full Name and "Log Out" link in the head of this page
+        const uName = document.getElementById('userFullName');
+        uName.innerText = "Hello, " + sessionStorage['username'];
+
+        // Get Employees and display them in a table
+        const getDepartments = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            // Create the row of table head
+            const tableHead = document.getElementById('table-head');
+
+            // table head row
+            const trHead = tableHead.insertRow(-1);
+            trHead.className = "table-primary";
+
+            // 'Id' - 'th' column
+            const th_Id = trHead.insertCell(0);
+            th_Id.innerHTML = 'Id';
+            th_Id.style.width = '40px';
+
+            // 'Department Name' - 'th' column
+            const th_DepartmentName = trHead.insertCell(1);
+            th_DepartmentName.innerHTML = 'Department Name';
+
+            // 'Department Manager Name' - 'th' column
+            const th_Dep_ManagerName = trHead.insertCell(2);
+            th_Dep_ManagerName.innerHTML = 'Department Manager Name';
+
+            // 'Department Employees' - 'th' column
+            const th_Department_Employees = trHead.insertCell(3);
+            th_Department_Employees.innerHTML = 'Department Employees';
+
+            // Set the departments array into the table-body
+            const tableBody = document.getElementById('table-body');
+
+            // Get the list of departments
+            const resp_dep = await fetch(url + 'departments', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+
+            // Resposne from departments router
+            const departments = await resp_dep.json();
+            console.log(departments);
+
+            // Get the list of employees
+            const resp_emp = await fetch(url + 'employees', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+
+            // Resposne from employees router
+            const employees = await resp_emp.json();
+            console.log(employees);
+
+            tableBody.innerHTML = "";
+            let index = 1;
+            departments.forEach(department => {
+                // table row
+                const tr = tableBody.insertRow();
+
+                // 'Id' - 'td' column
+                const tdId = tr.insertCell();
+                tdId.innerText = index++;
+
+                // 'Department Name' - 'td' column
+                const tdDepartmentName = tr.insertCell();
+                const dep_NameLink = document.createElement('a');
+                dep_NameLink.href = './editDepartment.html';
+                dep_NameLink.onclick = () => sessionStorage.setItem('departmentId', department._id);
+                dep_NameLink.innerText = department.Name;
+                tdDepartmentName.appendChild(dep_NameLink);
+
+                // 'Department Manager Name' - 'td' column
+                const tdDepartment_ManagerName = tr.insertCell();
+                const dapartment_Manager_Name_Link = document.createElement('a');
+                dapartment_Manager_Name_Link.href = './editEmployees.html';
+                const employee_manager = employees.find(employee => employee._id === department.Manager);
+                dapartment_Manager_Name_Link.onclick = () => sessionStorage.setItem('employeeId', employee_manager._id);
+                dapartment_Manager_Name_Link.innerText = employee_manager.firstName + ' ' + employee_manager.lastName;
+                tdDepartment_ManagerName.appendChild(dapartment_Manager_Name_Link);
+
+                // 'Department Employees' - 'td' column
+                const tdDepartment_Employees = tr.insertCell();
+                const listView = document.createElement('ol');
+                employees.forEach(employee => {
+                    if (employee.departmentID === department._id) {
+                        let listViewItem = document.createElement('li');
+                        let employee_Name = employee.firstName + ' ' + employee.lastName
+                        listViewItem.appendChild(document.createTextNode(employee_Name));
+                        listView.appendChild(listViewItem);
+                        tdDepartment_Employees.append(listView);
+                    }
+                })
+
+            });
+        }
+
+        // Add new department
+        const AddNewDepartment = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './newDepartment.html';
+        }
+
+        // Redirect to employees page
+        const goEmployee = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './employees.html';
+        }
+
+        const logOut = async () => {
+            const accessToken = sessionStorage['accessToken'];
+
+            const resp = await fetch(url + 'auth/logout');
+
+            const actions_Calc = await fetch(url);
+
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const data = await resp.text();
+            console.log(data);
+
+            location.href = './login.html';
+        }
+    </script>
+</body>
+
+</html>
