@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const employeesSchema = new Schema({
-    FirstName: { type: String, required: true },
-    LastName: { type: String, required: true },
-    StartWorkYear :{ type: Number, required: true },
-    DepartmentID: [{ type: Schema.Types.ObjectId, ref: 'Department' }]
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    startWorkYear :{ type: Number, required: true },
+    departmentID: { type: Schema.Types.ObjectId, ref: 'Department' }
 },
     { versionKey: false }
 );

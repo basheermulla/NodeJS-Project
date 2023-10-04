@@ -50,6 +50,28 @@ app.use(sessions({
     resave: false
 }));
 
+let session = '';
+
+app.get('/', function (req, res) {
+    // Access the session as req.session
+    session = req.session;
+    
+    if (session.page_views) {
+        session.page_views++;
+        console.log(session.page_views)
+        res.send("You visited this page " + req.session.page_views + " times");
+    } else {
+        session.page_views = 1;
+        //console.log(session.page_views)
+        res.send("Welcome to this page for the first time!");
+    }
+});
+
+/*app.get('/logout',(req,res) => {
+    req.session.destroy();
+    res.redirect('/');
+});*/
+
 /*************************//* Routers - Logic goes here *//*************************/
 
 const authRouter = require('./routers/authRouter');
@@ -57,6 +79,9 @@ app.use('/auth', authRouter);
 
 const employeesRouter = require('./routers/employeesRouter');
 app.use('/employees', employeesRouter);
+
+const departmentsRouter = require('./routers/departmentsRouter');
+app.use('/departments', departmentsRouter);
 
 // server listening
 app.listen(port, () => {
