@@ -47,14 +47,15 @@
                     <th style="width: 40px;">ID</th>
                     <th>Full Name</th>
                     <th>Department</th>
-                    <th>Department</th>
+                    <th>List Of Shifts</th>
                 </tr>
             </thead>
             <tbody id="table-body"></tbody>
         </table>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" onclick="AddNewEmployee()"> New Employee </button>
-            <button type="submit" class="btn btn-secondary" onclick="goDepartment()"> Go to Department Page </button>
+            <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
+            <button type="submit" class="btn btn-warning" onclick="goShifts()"> Go to Shifts Page </button>
         </div>
     </div>
 
@@ -63,7 +64,9 @@
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
-        uName.innerText = "Hello, " + sessionStorage['username']
+        uName.innerText = "Hello, " + sessionStorage['username'];
+
+        let shifts_Data = [];
 
         // Get Employees and display them in a table
         const getEmployees = async () => {
@@ -87,6 +90,15 @@
             // Resposne from employees router
             const employees = await resp_emp.json();
             console.log(employees);
+
+            // Get all shifts
+            const resp_shifts = await fetch(url + 'shifts', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+            // Response from shifts router
+            const shifts = await resp_shifts.json();
+            console.log(shifts);
 
             // Get all depatments
             const resp_dep = await fetch(url + 'departments', {
@@ -136,7 +148,16 @@
 
                 // 'List Of Shifts' - 'td' column
                 const tdShifts = tr.insertCell();
-                tdShifts.innerText = employee.startWorkYear;
+                const listView = document.createElement('ol');
+                shifts.forEach(shift => {
+                    if (employee.shiftsArr.includes(shift._id)) {
+                        let listViewItem = document.createElement('li');
+                        let shift_Info = new Date(shift.Date).toLocaleDateString() + ' [ ' + shift.StartingHour + ' ] - [ ' + shift.EndingHour + ' ]';
+                        listViewItem.appendChild(document.createTextNode(shift_Info));
+                        listView.appendChild(listViewItem);
+                        tdShifts.append(listView);
+                    }
+                });
             });
         }
 
@@ -176,7 +197,7 @@
             // Response from the req.session in the server
             const result = await actions_Calc.text();
             console.log(result);
-            
+
             let selectElement = document.querySelector('#filter-select');
             const filter = selectElement.value.toUpperCase();
             const table = document.getElementById("theFilterTable");
@@ -214,7 +235,7 @@
         }
 
         // Redirect to departments page
-        const goDepartment = async () => {
+        const goDepartments = async () => {
             // Reduce from the user credit number
             const actions_Calc = await fetch(url);
             // Respone from the req.session in the server
@@ -222,6 +243,17 @@
             console.log(result);
 
             location.href = './departments.html';
+        }
+
+        // Redirect to shifts page
+        const goShifts = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './shifts.html';
         }
 
         const logOut = async () => {

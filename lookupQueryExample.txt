@@ -1,0 +1,63 @@
+db={
+  "employee": [
+    {
+      "_id": 1,
+      "fullName": "Basheer Mulla",
+      "department": "61c65353565a2d9a1cd3020d",
+      "shiftsArr": [
+        {
+          "_id": "621dd85eb45ca2ae292d9a32"
+        },
+        {
+          "_id": "621dd85eb45ca2ae292d9a36"
+        }
+      ]
+    },
+    {
+      "_id": 2,
+      "fullName": "Maram Mulla",
+      "department": "61c74518962dc3efb96c3438",
+      "shiftsArr": [
+        {
+          "_id": "621dd85eb45ca2ae292d9a32"
+        },
+        {
+          "_id": "621de063bb5f9f0bf510897f"
+        }
+      ]
+    },
+    {
+      "_id": 3,
+      "fullName": "Basheer Mulla",
+      "department": "61c74775703176a6f72df444",
+      "shiftsArr": [
+        {
+          "_id": "621dd85eb45ca2ae292d9a36"
+        },
+        {
+          "_id": "621de063bb5f9f0bf510897f"
+        }
+      ]
+    }
+  ],
+  "shift": [
+    {
+      "_id": "621dd85eb45ca2ae292d9a32",
+      "date": "2020-05-18",
+      "startingHour": 8,
+      "endingHour": 16
+    },
+    {
+      "_id": "621dd85eb45ca2ae292d9a36",
+      "date": "2020-05-18",
+      "startingHour": 16,
+      "endingHour": 24
+    },
+    {
+      "_id": "621de063bb5f9f0bf510897f",
+      "date": "2020-05-19",
+      "startingHour": 24,
+      "endingHour": 8
+    }
+  ]
+}

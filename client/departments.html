@@ -37,7 +37,8 @@
 
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" onclick="AddNewDepartment()"> New Department </button>
-            <button type="submit" class="btn btn-secondary" onclick="goEmployee()"> Go to Employees Page </button>
+            <button type="submit" class="btn btn-success" onclick="goEmployee()"> Go to Employees Page </button>
+            <button type="submit" class="btn btn-warning" onclick="goShifts()"> Go to Shifts Page </button>
         </div>
     </div>
 
@@ -144,7 +145,7 @@
                         listView.appendChild(listViewItem);
                         tdDepartment_Employees.append(listView);
                     }
-                })
+                });
 
             });
         }
@@ -169,6 +170,17 @@
             console.log(result);
 
             location.href = './employees.html';
+        }
+
+        // Redirect to shifts page
+        const goShifts = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './shifts.html';
         }
 
         const logOut = async () => {
