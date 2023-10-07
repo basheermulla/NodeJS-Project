@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Employees Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</head>
+
+<body onload="getEmployeesAndShifts()" id="body">
+
+    <div class="container" id="container">
+        <span class="d-block p-1"></span>
+        <span class="d-block p-5 bg-primary-subtle"></span>
+        <span class="d-block p-2 bg-primary-subtle">
+            <div class="d-inline p-2">
+                <span class="font-size-16" id="userFullName"></span>
+                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+            </div>
+        </span>
+        <h2 class="p-2"> Shifts </span></h2>
+        <span class="d-block p-2"></span>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success" onclick="goEmployee()"> Go to Employees Page </button>
+            <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
+        </div>
+        <table id="theFilterTable" class="table table-bordered table-hover">
+            <thead id="table-head">
+                <tr class="table-primary">
+                    <th style="width: 40px;">ID</th>
+                    <th>Shift Date</th>
+                    <th>Starting hour</th>
+                    <th>Ending hour</th>
+                    <th>Employees belong a shift</th>
+                    <th>Allocate employee to a shift</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+
+        <span class="d-block p-1"></span>
+        <div class="mb-3">
+            <h4 class="p-2"> Create New Shift: </h4>
+            <div class="col-sm-10">
+                <form onclick="return false">
+                    <div class="form-group">
+                        <label> Date </label>
+                        <input type="date" class="form-control" id="date" placeholder="Date" />
+                    </div>
+                    <div class="form-group">
+                        <label> Starting Hour </label>
+                        <input type="text" class="form-control" id="StartingHour" placeholder="Starting Hour" />
+                    </div>
+                    <div class="form-group">
+                        <label> Ending Hour </label>
+                        <input type="text" class="form-control" id="EndingHour" placeholder="Ending Hour" />
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary" onclick="AddNewShift()"> Create New Shift </button>
+                </form>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <h4 class="p-2"> Change Existing Shift: </h4>
+            <div class="col-sm-10">
+                <form onclick="return false">
+                    <div class="form-group">
+                        <label> Date </label>
+                        <input type="date" class="form-control" id="editDate" placeholder="Date" />
+                    </div>
+                    <div class="form-group">
+                        <label> Starting Hour </label>
+                        <input type="text" class="form-control" id="editStartingHour" placeholder="Starting Hour" />
+                    </div>
+                    <div class="form-group">
+                        <label> Ending Hour </label>
+                        <input type="text" class="form-control" id="editEndingHour" placeholder="Ending Hour" />
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-info" onclick="changeExistShift()"> change Existing Shift
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const url = 'http://localhost:3000/'
+
+        // Show Full Name and "Log Out" link in the head of this page
+        const uName = document.getElementById('userFullName');
+        uName.innerText = "Hello, " + sessionStorage['username'];
+
+        let employees_Data = [];
+        let shifts_Data = [];
+
+        // Get Employees and display them in a table
+        const getEmployeesAndShifts = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            // Set the shifts array into the table-body
+            const tableBody = document.getElementById('table-body');
+
+            // Get the list of employees
+            const resp_emp = await fetch(url + 'employees', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+            // Resposne from employees router
+            const employees = await resp_emp.json();
+            console.log(employees);
+
+            // Set employees array into employee_Data Object
+            employees_Data = employees;
+
+            // Get all shifts
+            const resp_shifts = await fetch(url + 'shifts', {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+            // Response from departments router
+            const shifts = await resp_shifts.json();
+            console.log(shifts);
+
+            // Set shifts array into shifts_Data Object
+            shifts_Data = shifts;
+
+            tableBody.innerHTML = "";
+            let index = 1;
+            shifts.forEach(shift => {
+                // table row
+                const tr = tableBody.insertRow();
+
+                // 'Id' - 'td' column
+                const tdId = tr.insertCell();
+                tdId.innerText = index++;
+
+                // 'Shift Date' - 'td' column
+                const tdDate = tr.insertCell();
+                const shiftLink = document.createElement('a');
+                shiftLink.href = '#';
+                shiftLink.onclick = () => {
+                    sessionStorage.setItem('shiftId', shift._id);
+                    editShift();
+                }
+                shiftLink.innerText = new Date(shift.Date).toISOString().slice(0, 10);
+                tdDate.appendChild(shiftLink);
+
+                // 'Starting hour' - 'td' column
+                const tdStarting_Hour = tr.insertCell();
+                tdStarting_Hour.innerText = shift.StartingHour;
+
+                // 'Ending hour' - 'td' column
+                const tdEnding_Hour = tr.insertCell();
+                tdEnding_Hour.innerText = shift.EndingHour;
+
+                // 'Employees that  Belong to this shift' - 'td' column
+                const tdBelong_Belong_Employees = tr.insertCell();
+                const filter_Employees = employees
+                    .filter(employee => employee.shiftsArr.find((id) => id === shift._id))
+                    .map(name => { return name.firstName + ' ' + name.lastName });
+
+                console.log(filter_Employees)
+                const listView = document.createElement('ol');
+                filter_Employees.forEach(employee => {
+                    let listViewItem = document.createElement('li');
+                    let employee_Info = employee;
+                    listViewItem.appendChild(document.createTextNode(employee));
+                    listView.appendChild(listViewItem);
+                    tdBelong_Belong_Employees.append(listView);
+                });
+
+                // 'Allocate employee to a shift' - 'td' column
+                const tdAllocate_Employees = tr.insertCell();
+                const filter_Allocate_Employees = employees
+                    .filter(employee => !employee.shiftsArr.find((id) => id === shift._id))
+                    .map(name => {
+                        return {
+                            _id: name._id,
+                            name: name.firstName + ' ' + name.lastName
+                        }
+                    });
+
+                console.log(filter_Allocate_Employees)
+                // Create checkbox option within an input group’s
+                let iDiv = []
+                if (filter_Allocate_Employees != '') {
+                    iDiv = document.createElement('div');
+                    iDiv.className = 'form-check';
+                }
+
+                filter_Allocate_Employees.forEach(employee => {
+
+                    const iLabel = document.createElement("label");
+                    iLabel.style['padding-left'] = '15px';
+                    iLabel.innerText = employee.name;
+
+                    const iCheck = document.createElement("INPUT");
+                    iCheck.setAttribute("type", "radio");
+                    iCheck.className = 'form-check-input mt-0';
+                    iCheck.setAttribute("name", 'radioEmployee');
+                    iCheck.setAttribute("onclick", "employeeChoosen()");
+                    iCheck.setAttribute("id", shift._id)
+                    iCheck.setAttribute("value", employee._id)
+
+
+                    //iLabel.appendChild(iCheck);
+                    iDiv.appendChild(iCheck);
+                    iDiv.appendChild(iLabel);
+                    const ibr = document.createElement("br");
+
+                    iDiv.appendChild(ibr);
+                });
+
+                tdAllocate_Employees.append(iDiv)
+
+                if (filter_Allocate_Employees != '') {
+                    const iButton = document.createElement('button');
+                    iButton.className = 'btn btn-primary';
+                    iButton.style['margin'] = '15px';
+                    iButton.id = 'add_Button_Employees - ' + shift._id;
+                    iButton.setAttribute("type", "submit");
+                    iButton.setAttribute("onclick", "allocateEmployeeToShift()");
+                    iButton.innerText = 'Allocate Employee'
+                    iButton.disabled = true;
+
+                    tdAllocate_Employees.appendChild(iButton)
+                }
+            });
+        }
+
+        const employeeChoosen = () => {
+            const getId = () => document.querySelector('input[name="radioEmployee"]:checked').id;
+
+            const id = getId();
+            console.log(id)
+
+            // Do something on change:
+            document.querySelectorAll('input[name="radioEmployee"]').forEach(elExample => {
+                elExample.addEventListener("input", () => {
+                    console.log(elExample.id)
+                    if (elExample.id === id) {
+                        const button = document.getElementById('add_Button_Employees - ' + elExample.id).disabled = false;
+                        console.log('Yes')
+                    }
+                });
+
+                if (elExample.id !== id) {
+                    const button = document.getElementById('add_Button_Employees - ' + elExample.id).disabled = true;
+                    console.log('No')
+                }
+            });
+        }
+
+        const allocateEmployeeToShift = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            //shift._id
+            const getId = () => document.querySelector('input[name="radioEmployee"]:checked').id;
+            const shiftId = getId();
+
+            // employee._id
+            const getValue = () => document.querySelector('input[name="radioEmployee"]:checked').value;
+            const employeeId = getValue();
+
+            // Get the edited employee by id
+            const resp_emp = await fetch(`${url}employees/${employeeId}`, {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+
+            // Resposne from employees router - *** GET - Get Employee By Id ***
+            const employee = await resp_emp.json();
+            console.log(employee);
+
+            const obj_Employee_Collection = {
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                startWorkYear: employee.startWorkYear,
+                departmentID: employee.departmentId,
+                shiftsArr: employee.shiftsArr.concat(shiftId)
+            };
+
+            try {
+                const resp_emp = await fetch(`${url}employees/${employeeId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    body: JSON.stringify(obj_Employee_Collection)
+                });
+
+                const result = await resp_emp.text();
+                console.log(result)
+
+                location.href = './shifts.html';
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        //Add new Shift
+        const AddNewShift = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const obj_Shift_Collection = {
+                Date: document.getElementById('date').value,
+                StartingHour: document.getElementById('StartingHour').value,
+                EndingHour: document.getElementById('EndingHour').value
+            };
+
+            try {
+                // Add new shift
+                const resp_shift = await fetch(url + 'shifts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    body: JSON.stringify(obj_Shift_Collection),
+                });
+
+                // Response from shifts router - Add New Shift method
+                const result = await resp_shift.text();
+                console.log(result);
+
+                location.href = './shifts.html';
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        const editShift = async () => {
+            console.log('Kos maram');
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const shiftId = sessionStorage.getItem('shiftId');
+
+            // Get the edited shift by id
+            const resp_shift = await fetch(`${url}shifts/${shiftId}`, {
+                method: 'GET',
+                headers: { 'x-access-token': accessToken }
+            });
+
+            // Resposne from shifts router - *** GET - Get Shift By Id ***
+            const shift = await resp_shift.json();
+            console.log(shift);
+
+            document.getElementById('editDate').value = new Date(shift.Date).toISOString().substring(0, 10)
+            document.getElementById('editStartingHour').value = shift.StartingHour
+            document.getElementById('editEndingHour').value = shift.EndingHour
+        }
+
+        const changeExistShift = async () => {
+            // Get aaccess Token client
+            const accessToken = sessionStorage['accessToken'];
+
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Response from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const shiftId = sessionStorage.getItem('shiftId');
+
+            const obj_Shift_Collection = {
+                Date: document.getElementById('editDate').value,
+                StartingHour: document.getElementById('editStartingHour').value,
+                EndingHour: document.getElementById('editEndingHour').value
+            };
+
+            try {
+                const resp_shift = await fetch(`${url}shifts/${shiftId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    body: JSON.stringify(obj_Shift_Collection)
+                });
+
+                const result = await resp_shift.text();
+                console.log(result);
+
+                document.getElementById('editDate').value = '';
+                document.getElementById('editStartingHour').value = '';
+                document.getElementById('editEndingHour').value = '';
+
+                location.href = './shifts.html';
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Redirect to employees page
+        const goEmployee = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './employees.html';
+        }
+
+        // Redirect to departments page
+        const goDepartments = async () => {
+            // Reduce from the user credit number
+            const actions_Calc = await fetch(url);
+            // Respone from the req.session in the server
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            location.href = './departments.html';
+        }
+
+        const logOut = async () => {
+            const accessToken = sessionStorage['accessToken'];
+
+            const resp = await fetch(url + 'auth/logout');
+
+            const actions_Calc = await fetch(url);
+
+            const result = await actions_Calc.text();
+            console.log(result);
+
+            const data = await resp.text();
+            console.log(data);
+
+            location.href = './login.html';
+        }
+    </script>
+</body>
+
+</html>

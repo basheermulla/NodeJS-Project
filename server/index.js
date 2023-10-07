@@ -83,6 +83,9 @@ app.use('/employees', employeesRouter);
 const departmentsRouter = require('./routers/departmentsRouter');
 app.use('/departments', departmentsRouter);
 
+const shiftsRouter = require('./routers/shiftsRouter');
+app.use('/shifts', shiftsRouter);
+
 // server listening
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
