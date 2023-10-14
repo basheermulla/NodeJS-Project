@@ -25,26 +25,26 @@ router.post('/login', async (req, res) => {
         if (!isUserWasLogined) {
             const objUser = {
                 FullName: isUserVerified.name,
-                NumOfActions: 5,
+                NumOfActions: 8,
                 ExternalID: isUserVerified.id
             }
 
-            await usersBLL.addUserToMongoDB(objUser);
+            isUserWasLogined = await usersBLL.addUserToMongoDB(objUser);
         }
 
         const userId = 'someId'; // Find user's ID
         const accessToken = jwt.sign({ id: userId }, ACCESS_SECRET_TOKEN/*, { expiresIn: '1h' }*/);
 
-        res.send({ accessToken });
+        const obj_LoginUser = {
+            accessToken,
+            NumOfActions: isUserWasLogined.NumOfActions
+        }
+
+        console.log(obj_LoginUser);
+        res.send(obj_LoginUser);
     }
 
     res.status(401) // Unauthorized
 })
-
-router.get('/logout', (req, res) => {
-    req.session.destroy();
-    //res.redirect('/auth/login');
-    res.send('The user was logout');
-});
 
 module.exports = router;

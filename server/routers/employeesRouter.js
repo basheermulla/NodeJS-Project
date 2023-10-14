@@ -1,36 +1,39 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const employeesBLL = require('../BLL/employeesBLL');
+const usersBLL = require('../BLL/usersBLL');
 
 const router = express.Router();
 
 // Entry Point: http://localhost:3000/employees
 
 // Get All Employees
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    //console.log(req.headers);
+
     const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
     if (!token) {
         res.status(401).send('No token provided') // Unauthorized
     }
-
+ 
     const { ACCESS_SECRET_TOKEN } = process.env;
-
+ 
     jwt.verify(token, ACCESS_SECRET_TOKEN, async (err, data) => {
         if (err) {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ********************** Get All Employees *******
-        try {
-            const employees = await employeesBLL.getAllEmployees();
-            //const employees = [ {FirstName: 'Basheer'}, {LastName: 'Mulla'} ];
-            res.send(employees);
-        } catch (error) {
-            console.error(error);
-            res.status(500).send(error);
-        }
-        // *****************************************************************************
+    // The User has been Authorized ********************** Get All Employees *******
+    try {
+        const employees = await employeesBLL.getAllEmployees();
+
+        res.send(employees);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+    }
+    // *****************************************************************************
     });
 });
 
@@ -49,16 +52,16 @@ router.get('/:id', async (req, res) => {
             res.status(500).send('Fail to authenticate token')
         }
 
-        // The User has been Authorized ******************** GET - Get Employee By Id **
-        try {
-            const { id } = req.params;
-            const Employee = await employeesBLL.getEmployeeById(id);
-            res.send(Employee);
-        } catch (error) {
-            console.error(error);
-            res.status(500).send(error);
-        }
-        // *****************************************************************************
+    // The User has been Authorized ******************** GET - Get Employee By Id **
+    try {
+        const { id } = req.params;
+        const Employee = await employeesBLL.getEmployeeById(id);
+        res.send(Employee);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+    }
+    // *****************************************************************************
     });
 });
 
@@ -81,7 +84,7 @@ router.post('/', async (req, res) => {
         try {
             const { firstName, lastName, startWorkYear } = req.body; // Not in use
             const obj = req.body; // In use
-            console.log (obj)
+            console.log(obj)
             const result = await employeesBLL.addEmployee(obj);
             res.status(201).send(result);
         } catch (error) {

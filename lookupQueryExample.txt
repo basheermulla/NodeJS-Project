@@ -61,3 +61,23 @@ db={
     }
   ]
 }
+
+db.shift.aggregate([
+  {
+    "$lookup": {
+      "from": "employee",
+      "localField": "_id",
+      "foreignField": "shiftsArr._id",
+      "as": "shifts_docs"
+    }
+  },
+  {
+    "$project": {
+      "_id": 1,
+      "date": 1,
+      "startingHour": 1,
+      "endingHour": 1,
+      "shiftsArr": 1
+    }
+  }
+])

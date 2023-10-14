@@ -18,7 +18,7 @@
 
 <body onload="loadData()">
 
-    <div class="container">
+    <div class="container" id="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
         <span class="d-block p-2 bg-primary-subtle">
@@ -31,34 +31,36 @@
         <span class="d-block p-2"></span>
 
         <div class="col-sm-10">
-            <form onclick="return false">
-                <div class="form-group">
-                    <label> First Name </label>
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" />
-                </div>
-                <div class="form-group">
-                    <label> Last Name </label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
-                </div>
-                <div class="form-group">
-                    <label> Start Work Year </label>
-                    <input type="text" class="form-control" id="startWorkYear" placeholder="Start Work Year" />
-                </div>
-                <br />
-                <select id="selectDepartment" class="form-select">
-                    <option></option>
-                </select>
-                <br />
-                <button type="submit" class="btn btn-primary" onclick="updateEmployee()">
-                    Update
-                </button>
-                <button type="submit" class="btn btn-danger" onclick="deleteEmployee()">
-                    Delete
-                </button>
-                <span class="d-block p-2"></span>
+            <div class="row" id="editEmployeeForm">
+                <form onclick="return false">
+                    <div class="form-group">
+                        <label> First Name </label>
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                    </div>
+                    <div class="form-group">
+                        <label> Last Name </label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <label> Start Work Year </label>
+                        <input type="text" class="form-control" id="startWorkYear" placeholder="Start Work Year" />
+                    </div>
+                    <br />
+                    <select id="selectDepartment" class="form-select">
+                        <option></option>
+                    </select>
+                    <br />
+                    <button type="submit" class="btn btn-primary" onclick="updateEmployee()">
+                        Update
+                    </button>
+                    <button type="submit" class="btn btn-danger" onclick="deleteEmployee()">
+                        Delete
+                    </button>
+                    <span class="d-block p-2"></span>
 
-            </form>
-            <div class="col-sm-10">
+                </form>
+            </div>
+            <div class="row">
                 <h4 class="p-2"> Shifts employee: </h4>
                 <table id="shiftsTable" class="table table-bordered table-hover">
                     <thead id="table-head">
@@ -73,7 +75,7 @@
 
             <span class="d-block p-2"></span>
 
-            <div class="col-sm-10">
+            <div class="row">
                 <h4 class="p-2"> Register employee o an EXISTING Shifts: </h4>
                 <form onclick="return false">
                     <select id="addShifts" class="form-select" onchange="shiftsChoosen()">
@@ -90,11 +92,24 @@
     </div>
 
     <script>
-        const url = 'http://localhost:3000/'
+        const url = 'http://127.0.0.1:3001/'
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
         uName.innerText = "Hello, " + sessionStorage['username'];
+        const accessToken = sessionStorage['accessToken'];
+
+        const views = JSON.parse(sessionStorage.getItem('views'))[0].views;
+        const NumOfActions = sessionStorage.getItem('NumOfActions');
+
+        // console.log(typeof views); 
+        // console.log(typeof NumOfActions);
+        // console.log(typeof Number(NumOfActions));
+        // console.log(typeof +NumOfActions);
+
+        if (views === +NumOfActions) {
+            location.href = url + 'auth';
+        }
 
         const employeeId = sessionStorage.getItem('employeeId');
 
@@ -105,15 +120,6 @@
         let employee_Data = [];
 
         const loadData = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             // Set the employees array into the table-body
             const tableBody = document.getElementById('table-body');
 
@@ -125,7 +131,6 @@
 
             // Resposne from employees router - *** GET - Get Employee By Id ***
             const employee = await resp_emp.json();
-            console.log(employee);
 
             // Set employee into employee Object
             employee_Data = employee;
@@ -142,7 +147,6 @@
             });
             // Response from departments router
             const departments = await resp_dep.json();
-            console.log(departments);
 
             // Set departments array into department_Data Object
             department_Data = departments;
@@ -171,7 +175,6 @@
             });
             // Response from departments router
             const shifts = await resp_shifts.json();
-            console.log(shifts);
 
             // Set shifts array into shifts_Data Object
             shifts_Data = shifts;
@@ -203,7 +206,6 @@
 
             // Filter shifts that not belong to the employee
             const filter_Shifts = shifts.filter(shift => !employee.shiftsArr.find((id) => id === shift._id));
-            console.log(filter_Shifts)
             filter_Shifts.forEach(shift => {
                 const opt = new Date(shift.Date).toISOString().slice(0, 10) + ' ---> [ ' + shift.StartingHour + ' ] - [ ' + shift.EndingHour + ' ]';
                 let el_opt = document.createElement("option");
@@ -224,18 +226,22 @@
         }
 
         const registerShifts = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
+            // ****************** Increase number of actions ******************** 
+            try {
+                const resp_Check_Action = await fetch(url + 'actions');
+                // Resposne from employees router
+                const { views } = await resp_Check_Action.json();
+                let current_Views = []
+                current_Views.push({
+                    views
+                }); // add the item
+                sessionStorage.setItem('views', JSON.stringify(current_Views));
+            } catch (error) {
+                console.error(error);
+            }
 
             let selectElement = document.querySelector('#addShifts');
             const id = selectElement.options[selectElement.selectedIndex].id;
-            console.log(id)
 
             const obj_Employee_Collection = {
                 firstName: employee_Data.firstName,
@@ -253,24 +259,14 @@
                 });
 
                 const result = await resp_emp.text();
-                console.log(result)
 
-                location.href = './editEmployees.html';
+                location.href = url + 'editEmp';
             } catch (error) {
                 console.error(error);
             }
         }
 
         const updateEmployee = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             // Get the _id of selected Department
             let selectElement = document.querySelector('#selectDepartment');
             const department_Name_Selected = selectElement.value;
@@ -291,24 +287,14 @@
                 });
 
                 const result = await resp_emp.text();
-                console.log(result)
 
-                location.href = './employees.html';
+                location.href = url + 'emp';
             } catch (error) {
                 console.error(error);
             }
         }
 
         const deleteEmployee = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             const ifManager = department_Data.find(department => department.Manager === employeeId);
 
             if (!ifManager) {
@@ -319,9 +305,8 @@
                     });
 
                     const result = await resp_emp.text();
-                    console.log(result)
 
-                    location.href = './employees.html';
+                    location.href = url + 'emp';
                 } catch (error) {
                     console.error(error);
                 }
@@ -329,26 +314,18 @@
                 const message = 'You cannot delete a manager employee !'
                 const wrapper = document.createElement("div");
                 wrapper.innerHTML = '<div class="alert alert-danger" role="alert">' + message + '</div>';
-                document.body.appendChild(wrapper);
+                document.getElementById('editEmployeeForm').appendChild(wrapper);
             }
 
 
         }
 
         const logOut = async () => {
-            const accessToken = sessionStorage['accessToken'];
-
-            const resp = await fetch(url + 'auth/logout');
-
-            const actions_Calc = await fetch(url);
-
-            const result = await actions_Calc.text();
-            console.log(result);
+            const resp = await fetch(url + 'actions/logout');
 
             const data = await resp.text();
-            console.log(data);
 
-            location.href = './login.html';
+            location.href = url + 'auth';
         }
     </script>
 
