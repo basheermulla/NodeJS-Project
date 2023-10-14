@@ -65,7 +65,6 @@ router.get('/:id', async (req, res) => {
 // POST - Create a Department
 router.post('/', async (req, res) => {
     const token = req.headers['x-access-token'];
-    //console.log(token)
     // If 'username' and 'password' are exist in DB:
     if (!token) {
         res.status(401).send('No token provided') // Unauthorized

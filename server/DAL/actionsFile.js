@@ -2,7 +2,7 @@ const jFile = require('jsonfile');
 
 const file = 'data/actions.json'
 
-/*** Json File CRUD ***/
+/*** Jsoncd File CRUD ***/
 /*** For Actions ***/
 /***provided from a Local "jsonfile" ***/
 /*** Read, Write ***/

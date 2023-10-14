@@ -44,28 +44,35 @@
 
     <script>
 
-        const url = 'http://localhost:3000/auth/login'
+        const url = 'http://127.0.0.1:3001/'
 
         const login = async () => {
+            
             const loginData = {
                 username: document.getElementById('username').value,
                 email: document.getElementById('email').value
             }
             
             sessionStorage['username'] = loginData.username
-
-            const resp = await fetch(url, {
+            
+            const resp = await fetch(url + 'auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginData)
             });
 
-            const data = await resp.json();
+            const  data = await resp.json();
             console.log(data);
 
             sessionStorage['accessToken'] = data.accessToken;
+            sessionStorage['NumOfActions'] = data.NumOfActions;
             console.log(sessionStorage['accessToken']);
-            location.href = './employees.html';
+            console.log(sessionStorage['NumOfActions']);
+
+            console.log(url + 'emp');
+            
+            location.href = url + 'emp';
+            //location.href = './employees.html';
         }
     </script>
 

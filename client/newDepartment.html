@@ -53,37 +53,52 @@
     </div>
 
     <script>
-        const url = 'http://localhost:3000/'
+        const url = 'http://127.0.0.1:3001/'
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
         uName.innerText = "Hello, " + sessionStorage['username'];
 
+        // Get aaccess Token client
+        const accessToken = sessionStorage['accessToken'];
+
+        const views = JSON.parse(sessionStorage.getItem('views'))[0].views;
+        const NumOfActions = sessionStorage.getItem('NumOfActions');
+
+        // console.log(typeof views); 
+        // console.log(typeof NumOfActions);
+        // console.log(typeof Number(NumOfActions));
+        // console.log(typeof +NumOfActions);
+
+        if (views === +NumOfActions) {
+            window.history.back();
+        }
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("x-access-token", accessToken);
+
         let employee_Data = [];
 
         // Get Employees and display them in a select
         const getEmployees = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
+            // *********************** Get Employees ************************
+            let employees = [];
+            try {
+                // Get the list of employees
+                const resp_emp = await fetch(url + 'employees', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
 
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
+                // Resposne from employees router
+                employees = await resp_emp.json();
 
-            // Get all employees
-            const resp_emp = await fetch(url + 'employees', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-
-            // Response from employees router
-            const employees = await resp_emp.json();
-            console.log(employees);
-
-            // Set employees array into employee_Data Object
-            employee_Data = employees;
+                // Set employees array into employee_Data Object
+                employee_Data = employees;
+            } catch (error) {
+                console.error(error);
+            }
 
             // Set the employee array into the select element
             let selectElement = document.querySelector('#departmentManagerName');
@@ -99,20 +114,11 @@
 
         //Add new department
         const AddNewDepartment = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             // Get the _id of selected department manager
             let selectElement = document.querySelector('#departmentManagerName');
             const department_Manager_Selected = selectElement.value;
             const department_Manager_Id_Selected = selectElement.options[selectElement.selectedIndex].id;
-            
+
             const obj_Department_Collection = {
                 Name: document.getElementById('departmentName').value,
                 Manager: department_Manager_Id_Selected
@@ -122,15 +128,14 @@
                 // Add new department
                 const resp_dep = await fetch(url + 'departments', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Department_Collection),
                 });
 
                 // Response from departments router - Add New Department method
                 const result = await resp_dep.text();
-                console.log(result);
 
-                location.href = './departments.html';
+                location.href = url + 'dep';
             } catch (error) {
                 console.error(error);
             }
@@ -140,23 +145,17 @@
         const cancel = () => {
             document.getElementById('departmentName').value = '';
 
-            location.href = './departments.html';
+            location.href = url + 'dep';
         }
 
         const logOut = async () => {
             const accessToken = sessionStorage['accessToken'];
 
-            const resp = await fetch(url + 'auth/logout');
-
-            const actions_Calc = await fetch(url);
-
-            const result = await actions_Calc.text();
-            console.log(result);
+            const resp = await fetch(url + 'actions/logout');
 
             const data = await resp.text();
-            console.log(data);
 
-            location.href = './login.html';
+            location.href = url + 'auth';
         }
     </script>
 </body>

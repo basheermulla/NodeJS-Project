@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
         // The User has been Authorized ********************** Get All Shifts *******
         try {
             const shifts = await shiftsBLL.getAllShifts();
-            //const shifts = [ {FirstName: 'Basheer'}, {LastName: 'Mulla'} ];
+
             res.send(shifts);
         } catch (error) {
             console.error(error);
@@ -99,7 +99,7 @@ router.post('/', async (req, res) => {
 
 // PUT - Update a Shift
 router.put('/:id', async (req, res) => {
-    /*const token = req.headers['x-access-token'];
+    const token = req.headers['x-access-token'];
     // If 'username' and 'password' are exist in DB:
     if (!token) {
         res.status(401).send('No token provided') // Unauthorized
@@ -110,7 +110,7 @@ router.put('/:id', async (req, res) => {
     jwt.verify(token, ACCESS_SECRET_TOKEN, async (err, data) => {
         if (err) {
             res.status(500).send('Fail to authenticate token')
-        }*/
+        }
 
         // The User has been Authorized ******************** PUT - Update an Shift **
         try {
@@ -123,7 +123,7 @@ router.put('/:id', async (req, res) => {
             res.status(500).send(error);
         }
         // *****************************************************************************
-    /*});*/
+    });
 });
 
 // DELETE - Delete a Shift

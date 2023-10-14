@@ -95,52 +95,87 @@
     </div>
 
     <script>
-        const url = 'http://localhost:3000/'
+        const url = 'http://127.0.0.1:3001/'
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
         uName.innerText = "Hello, " + sessionStorage['username'];
+
+        // Get aaccess Token client
+        const accessToken = sessionStorage['accessToken'];
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("x-access-token", accessToken);
 
         let employees_Data = [];
         let shifts_Data = [];
 
         // Get Employees and display them in a table
         const getEmployeesAndShifts = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
 
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
+            // ****************** Check number of actions ******************** 
+            try {
+                const resp_Check_Action = await fetch(url + 'actions');
+                // Resposne from employees router
+                const { views } = await resp_Check_Action.json();
+                console.log('views = ' + views);
+                let current_Views = []
+                current_Views.push({
+                    views
+                }); // add the item
+                sessionStorage.setItem('views', JSON.stringify(current_Views));
+                console.log(sessionStorage.getItem('views'));
+
+                // Get num of actions user
+                const NumOfActions = sessionStorage['NumOfActions'];
+
+                if (views > NumOfActions) {
+                    // Logout because - You reached to the maximum actions allowed
+                    //const resp_Logout = await fetch(url + 'actions/logOutThisDay');
+                    location.href = url + 'auth';
+                }
+            } catch (error) {
+                console.error(error);
+            }
 
             // Set the shifts array into the table-body
             const tableBody = document.getElementById('table-body');
 
-            // Get the list of employees
-            const resp_emp = await fetch(url + 'employees', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-            // Resposne from employees router
-            const employees = await resp_emp.json();
-            console.log(employees);
+            // *********************** Get Employees ************************
+            let employees = [];
+            try {
+                // Get the list of employees
+                const resp_emp = await fetch(url + 'employees', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
 
-            // Set employees array into employee_Data Object
-            employees_Data = employees;
+                // Resposne from employees router
+                employees = await resp_emp.json();
 
-            // Get all shifts
-            const resp_shifts = await fetch(url + 'shifts', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-            // Response from departments router
-            const shifts = await resp_shifts.json();
-            console.log(shifts);
+                // Set employees array into employee_Data Object
+                employees_Data = employees;
+            } catch (error) {
+                console.error(error);
+            }
 
-            // Set shifts array into shifts_Data Object
-            shifts_Data = shifts;
+            // *********************** Get Shifts ************************
+            let shifts = [];
+            try {
+                // Get all shifts
+                const resp_shifts = await fetch(url + 'shifts', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
+                // Response from shifts router
+                shifts = await resp_shifts.json();
+
+                // Set shifts array into shifts_Data Object
+                shifts_Data = shifts;
+            } catch (error) {
+                console.error(error);
+            }
 
             tableBody.innerHTML = "";
             let index = 1;
@@ -177,7 +212,6 @@
                     .filter(employee => employee.shiftsArr.find((id) => id === shift._id))
                     .map(name => { return name.firstName + ' ' + name.lastName });
 
-                console.log(filter_Employees)
                 const listView = document.createElement('ol');
                 filter_Employees.forEach(employee => {
                     let listViewItem = document.createElement('li');
@@ -198,7 +232,6 @@
                         }
                     });
 
-                console.log(filter_Allocate_Employees)
                 // Create checkbox option within an input group’s
                 let iDiv = []
                 if (filter_Allocate_Employees != '') {
@@ -219,7 +252,6 @@
                     iCheck.setAttribute("onclick", "employeeChoosen()");
                     iCheck.setAttribute("id", shift._id)
                     iCheck.setAttribute("value", employee._id)
-
 
                     //iLabel.appendChild(iCheck);
                     iDiv.appendChild(iCheck);
@@ -250,7 +282,6 @@
             const getId = () => document.querySelector('input[name="radioEmployee"]:checked').id;
 
             const id = getId();
-            console.log(id)
 
             // Do something on change:
             document.querySelectorAll('input[name="radioEmployee"]').forEach(elExample => {
@@ -270,15 +301,6 @@
         }
 
         const allocateEmployeeToShift = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             //shift._id
             const getId = () => document.querySelector('input[name="radioEmployee"]:checked').id;
             const shiftId = getId();
@@ -287,15 +309,8 @@
             const getValue = () => document.querySelector('input[name="radioEmployee"]:checked').value;
             const employeeId = getValue();
 
-            // Get the edited employee by id
-            const resp_emp = await fetch(`${url}employees/${employeeId}`, {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-
-            // Resposne from employees router - *** GET - Get Employee By Id ***
-            const employee = await resp_emp.json();
-            console.log(employee);
+            // Find employee by id
+            const employee = employees_Data.find(employee => employee._id === employeeId);
 
             const obj_Employee_Collection = {
                 firstName: employee.firstName,
@@ -308,14 +323,14 @@
             try {
                 const resp_emp = await fetch(`${url}employees/${employeeId}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Employee_Collection)
                 });
 
                 const result = await resp_emp.text();
                 console.log(result)
 
-                location.href = './shifts.html';
+                location.href = url + 'shif';
             } catch (error) {
                 console.error(error);
             }
@@ -323,15 +338,6 @@
 
         //Add new Shift
         const AddNewShift = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             const obj_Shift_Collection = {
                 Date: document.getElementById('date').value,
                 StartingHour: document.getElementById('StartingHour').value,
@@ -342,42 +348,24 @@
                 // Add new shift
                 const resp_shift = await fetch(url + 'shifts', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Shift_Collection),
                 });
 
                 // Response from shifts router - Add New Shift method
                 const result = await resp_shift.text();
-                console.log(result);
 
-                location.href = './shifts.html';
+                location.href = url + 'shif';
             } catch (error) {
                 console.error(error);
             }
         }
 
         const editShift = async () => {
-            console.log('Kos maram');
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             const shiftId = sessionStorage.getItem('shiftId');
 
-            // Get the edited shift by id
-            const resp_shift = await fetch(`${url}shifts/${shiftId}`, {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-
-            // Resposne from shifts router - *** GET - Get Shift By Id ***
-            const shift = await resp_shift.json();
-            console.log(shift);
+            // Find shift by id
+            const shift = shifts_Data.find(shift => shift._id === shiftId);
 
             document.getElementById('editDate').value = new Date(shift.Date).toISOString().substring(0, 10)
             document.getElementById('editStartingHour').value = shift.StartingHour
@@ -385,15 +373,6 @@
         }
 
         const changeExistShift = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
             const shiftId = sessionStorage.getItem('shiftId');
 
             const obj_Shift_Collection = {
@@ -405,7 +384,7 @@
             try {
                 const resp_shift = await fetch(`${url}shifts/${shiftId}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Shift_Collection)
                 });
 
@@ -416,7 +395,7 @@
                 document.getElementById('editStartingHour').value = '';
                 document.getElementById('editEndingHour').value = '';
 
-                location.href = './shifts.html';
+                location.href = url + 'shif';
             } catch (error) {
                 console.error(error);
             }
@@ -424,40 +403,20 @@
 
         // Redirect to employees page
         const goEmployee = async () => {
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
-            location.href = './employees.html';
+            location.href = url + 'emp';
         }
 
         // Redirect to departments page
         const goDepartments = async () => {
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
-            location.href = './departments.html';
+            location.href = url + 'dep';
         }
 
         const logOut = async () => {
-            const accessToken = sessionStorage['accessToken'];
-
-            const resp = await fetch(url + 'auth/logout');
-
-            const actions_Calc = await fetch(url);
-
-            const result = await actions_Calc.text();
-            console.log(result);
+            const resp = await fetch(url + 'actions/logout');
 
             const data = await resp.text();
-            console.log(data);
 
-            location.href = './login.html';
+            location.href = url + 'auth';
         }
     </script>
 </body>

@@ -43,7 +43,7 @@
     </div>
 
     <script>
-        const url = 'http://localhost:3000/'
+        const url = 'http://127.0.0.1:3001/'
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
@@ -54,11 +54,34 @@
             // Get aaccess Token client
             const accessToken = sessionStorage['accessToken'];
 
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Response from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("x-access-token", accessToken);
+
+            // ****************** Check number of actions ******************** 
+            try {
+                const resp_Check_Action = await fetch(url + 'actions');
+                // Resposne from employees router
+                const { views } = await resp_Check_Action.json();
+                console.log('views = ' + views);
+                let current_Views = []
+                current_Views.push({
+                    views
+                }); // add the item
+                sessionStorage.setItem('views', JSON.stringify(current_Views));
+                console.log(sessionStorage.getItem('views'));
+
+                // Get num of actions user
+                const NumOfActions = sessionStorage['NumOfActions'];
+
+                if (views > NumOfActions) {
+                    // Logout because - You reached to the maximum actions allowed
+                    //const resp_Logout = await fetch(url + 'actions/logOutThisDay');
+                    location.href = url + 'auth';
+                }
+            } catch (error) {
+                console.error(error);
+            }
 
             // Create the row of table head
             const tableHead = document.getElementById('table-head');
@@ -87,25 +110,34 @@
             // Set the departments array into the table-body
             const tableBody = document.getElementById('table-body');
 
-            // Get the list of departments
-            const resp_dep = await fetch(url + 'departments', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
+            // *********************** Get departments ************************
+            let departments = [];
+            try {
+                // Get all depatments
+                const resp_dep = await fetch(url + 'departments', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
+                // Response from departments router
+                departments = await resp_dep.json();
+            } catch (error) {
+                console.error(error);
+            }
 
-            // Resposne from departments router
-            const departments = await resp_dep.json();
-            console.log(departments);
+            // *********************** Get Employees ************************
+            let employees = [];
+            try {
+                // Get the list of employees
+                const resp_emp = await fetch(url + 'employees', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
 
-            // Get the list of employees
-            const resp_emp = await fetch(url + 'employees', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-
-            // Resposne from employees router
-            const employees = await resp_emp.json();
-            console.log(employees);
+                // Resposne from employees router
+                employees = await resp_emp.json();
+            } catch (error) {
+                console.error(error);
+            }
 
             tableBody.innerHTML = "";
             let index = 1;
@@ -120,7 +152,7 @@
                 // 'Department Name' - 'td' column
                 const tdDepartmentName = tr.insertCell();
                 const dep_NameLink = document.createElement('a');
-                dep_NameLink.href = './editDepartment.html';
+                dep_NameLink.href = url + 'editDep';
                 dep_NameLink.onclick = () => sessionStorage.setItem('departmentId', department._id);
                 dep_NameLink.innerText = department.Name;
                 tdDepartmentName.appendChild(dep_NameLink);
@@ -128,7 +160,7 @@
                 // 'Department Manager Name' - 'td' column
                 const tdDepartment_ManagerName = tr.insertCell();
                 const dapartment_Manager_Name_Link = document.createElement('a');
-                dapartment_Manager_Name_Link.href = './editEmployees.html';
+                dapartment_Manager_Name_Link.href = url + 'editEmp';
                 const employee_manager = employees.find(employee => employee._id === department.Manager);
                 dapartment_Manager_Name_Link.onclick = () => sessionStorage.setItem('employeeId', employee_manager._id);
                 dapartment_Manager_Name_Link.innerText = employee_manager.firstName + ' ' + employee_manager.lastName;
@@ -152,51 +184,27 @@
 
         // Add new department
         const AddNewDepartment = async () => {
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
-            location.href = './newDepartment.html';
+            location.href = url + 'newDep';
         }
 
         // Redirect to employees page
         const goEmployee = async () => {
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
-            location.href = './employees.html';
+            location.href = url + 'emp';
         }
 
         // Redirect to shifts page
         const goShifts = async () => {
-            // Reduce from the user credit number
-            const actions_Calc = await fetch(url);
-            // Respone from the req.session in the server
-            const result = await actions_Calc.text();
-            console.log(result);
-
-            location.href = './shifts.html';
+            location.href = url + 'shif';
         }
 
         const logOut = async () => {
             const accessToken = sessionStorage['accessToken'];
 
-            const resp = await fetch(url + 'auth/logout');
-
-            const actions_Calc = await fetch(url);
-
-            const result = await actions_Calc.text();
-            console.log(result);
+            const resp = await fetch(url + 'actions/logout');
 
             const data = await resp.text();
-            console.log(data);
 
-            location.href = './login.html';
+            location.href = url + 'auth';
         }
     </script>
 </body>
