@@ -141,20 +141,14 @@
             }
         }
 
-        // Return to Employees page
+        // Return to Back page
         const cancel = () => {
             document.getElementById('departmentName').value = '';
 
-            location.href = url + 'dep';
+            window.history.back();
         }
 
         const logOut = async () => {
-            const accessToken = sessionStorage['accessToken'];
-
-            const resp = await fetch(url + 'actions/logout');
-
-            const data = await resp.text();
-
             location.href = url + 'auth';
         }
     </script>

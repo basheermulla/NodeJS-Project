@@ -1,6 +1,8 @@
 const Department = require('../models/departmentModel.js');
 
-/* CRUD - Create, Read, Update, Delete */
+/****************************************************************************************************************************************/
+/************//* Work with - Departments Collection MongoDB *///     =======>     //* CRUD - Create, Read, Update, Delete *//************/
+/****************************************************************************************************************************************/
 
 // GET - Get All Departments - Read
 const getAllDepartments =  () => {

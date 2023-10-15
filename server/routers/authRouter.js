@@ -5,6 +5,13 @@ const usersBLL = require('../BLL/usersBLL');
 const router = express.Router();
 
 // Entry Point: http://localhost:3000/auth
+/****************************************************************************************************************************************/
+/***************//* Work with - usersBLL.js *///     =================>     //*****/ Login *//*******************************************/
+/****************************************************************************************************************************************/
+/*******************************/// <======= Entry Point: http://localhost:3000/auth =======> //*****************************************/
+/****************************************************************************************************************************************/
+/****************************************************************************************************************************************/
+
 router.post('/login', async (req, res) => {
     const { username, email } = req.body;
     const { ACCESS_SECRET_TOKEN } = process.env;
@@ -37,7 +44,8 @@ router.post('/login', async (req, res) => {
 
         const obj_LoginUser = {
             accessToken,
-            NumOfActions: isUserWasLogined.NumOfActions
+            NumOfActions: isUserWasLogined.NumOfActions,
+            id: isUserWasLogined.ExternalID
         }
 
         console.log(obj_LoginUser);

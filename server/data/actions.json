@@ -1,10 +1,1 @@
-{
-    "actions": [
-        {
-            "id": 1,
-            "maxActions": 5,
-            "date": "1/03/2023",
-            "actionsAllowed": 3
-        }
-    ]
-}
+{"actions":[{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":2},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":1},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":0},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3}]}

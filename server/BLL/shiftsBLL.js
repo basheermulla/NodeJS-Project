@@ -1,6 +1,8 @@
 const Shift = require('../models/shiftModel.js');
 
-/* CRUD - Create, Read, Update, Delete */
+/****************************************************************************************************************************************/
+/*******************//* Work with - Shifts Collection MongoDB *///     =======>     //* CRUD - Create, Read, Update *//******************/
+/****************************************************************************************************************************************/
 
 // GET - Get All Shifts - Read
 const getAllShifts =  () => {
@@ -25,18 +27,11 @@ const updateShift = async (id, obj) => {
     return 'Updated';
 };
 
-// DELETE - Delete a Shift
-const deleteShift = async (id) => {
-    await Shift.findByIdAndDelete(id);
-    return 'Deleted';
-};
-
 module.exports = {
     getAllShifts,
     getShiftById,
     addShift,
     updateShift,
-    deleteShift
 };
 
 
