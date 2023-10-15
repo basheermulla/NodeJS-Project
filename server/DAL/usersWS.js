@@ -17,12 +17,6 @@ const getUserById = (id) => {
     return axios.get(`${url}/${id}`)
 };
 
-// POST - Create an Address
-
-// PUT - Update an Address
-
-// DELETE - Delete an Address
-
 module.exports = { 
     getAllUsers,
     getUserById

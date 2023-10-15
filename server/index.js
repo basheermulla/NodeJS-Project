@@ -8,7 +8,6 @@ const connectDB = require('./config/db');
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const path = require("path");
-const moment = require('moment');
 
 // Use configuration files
 const { API_PORT } = process.env;
@@ -16,12 +15,6 @@ const port = process.env.PORT || API_PORT;
 
 // Connect Database
 connectDB();
-
-// creating 24 hours from milliseconds
-
-const oneDay = 1000 * 60 * 60 * 24; // Not in use
-const dayMidnight = moment().endOf("day").toDate(); // Not in use 
-const dateNow = new Date(); // Not in use 
 
 const now = new Date();
 const night = new Date(
@@ -34,7 +27,9 @@ const msToMidnight = night.getTime() - now.getTime();
 
 const { SECRET } = process.env;
 
-/********************************//* Middlewares *//********************************/
+/****************************************************************************************************************************************/
+/******************************************************//* Middlewares *//***************************************************************/
+/****************************************************************************************************************************************/
 
 // set static directories
 app.use(express.static(path.join(__dirname, 'public')));
@@ -96,8 +91,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//app.set('trust proxy', 1) // trust first proxy
-
 // Create a session middleware
 const sessionMiddleware = session({
     secret: SECRET,
@@ -113,7 +106,9 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
-/*************************//* Routers - Logic goes here *//*************************/
+/****************************************************************************************************************************************/
+/**********************************************//* Routers - Logic goes here *//*********************************************************/
+/****************************************************************************************************************************************/
 
 const authRouter = require('./routers/authRouter');
 app.use('/auth', authRouter);
@@ -129,6 +124,13 @@ app.use('/shifts', shiftsRouter);
 
 const actionsRouter = require('./routers/actionsRouter');
 app.use('/actions', actionsRouter);
+
+const usersRouter = require('./routers/usersRouter');
+app.use('/users', usersRouter);
+
+/****************************************************************************************************************************************/
+/**********************************//* Render HTML file in Node.js and Express.js framework *//******************************************/
+/****************************************************************************************************************************************/
 
 app.get('/auth', (req, res) => {
     res.sendFile(path.join(__dirname, "../" + 'client/login.html'))
@@ -166,7 +168,15 @@ app.get('/editDep', (req, res) => {
     res.sendFile(path.join(__dirname, "../" + 'client/editDepartment.html'))
 });
 
+app.get('/usersPage', (req, res) => {
+    res.sendFile(path.join(__dirname, "../" + 'client/users.html'))
+});
+
+/****************************************************************************************************************************************/
+/******************************************************//* server listening *//**********************************************************/
+/****************************************************************************************************************************************/
+
 // server listening
 app.listen(port, () => {
     console.log(`Server is running at http://127.0.0.1:${port}`);
-})
+});

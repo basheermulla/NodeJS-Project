@@ -149,22 +149,16 @@
             }
         }
 
-        // Return to Employees page
+        // Return to Back page
         const cancel = () => {
             document.getElementById('firstName').value = '';
             document.getElementById('lastName').value = '';
             document.getElementById('startWorkYear').value = '';
 
-            location.href = url + 'emp';
+            window.history.back();
         }
 
         const logOut = async () => {
-            const accessToken = sessionStorage['accessToken'];
-
-            const resp = await fetch(url + 'actions/logout');
-
-            const data = await resp.text();
-
             location.href = url + 'auth';
         }
     </script>

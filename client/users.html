@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Users Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="form-action 'self'; report-to csp-violation-report;" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline';" />
+</head>
+
+<body onload="getUsers()" id="body">
+
+    <div class="container" id="container">
+        <span class="d-block p-1"></span>
+        <span class="d-block p-5 bg-primary-subtle"></span>
+        <span class="d-block p-2 bg-primary-subtle">
+            <div class="d-inline p-2">
+                <span class="font-size-16" id="userFullName"></span>
+                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+            </div>
+        </span>
+        <h2 class="p-2"> Users </span></h2>
+
+        <span class="d-block p-2"></span>
+
+        <table id="theFilterTable" class="table table-bordered table-hover">
+            <thead id="table-head">
+                <tr class="table-primary">
+                    <th style="width: 40px;">ID</th>
+                    <th>Full Name</th>
+                    <th>Maximum Actions Allowed</th>
+                    <th>Current Actions Allowed Today</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success" onclick="goEmployee()"> Go to Employees Page </button>
+            <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
+            <button type="submit" class="btn btn-warning" onclick="goShifts()"> Go to Shifts Page </button><br /><br />
+        </div>
+    </div>
+
+    <script>
+        const url = 'http://127.0.0.1:3001/'
+
+        // Show Full Name and "Log Out" link in the head of this page
+        const uName = document.getElementById('userFullName');
+        uName.innerText = "Hello, " + sessionStorage['username'];
+
+        // Get aaccess Token client
+        const accessToken = sessionStorage['accessToken'];
+
+        // Get Employees and display them in a table
+        const getUsers = async () => {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("x-access-token", accessToken);
+
+            // ****************** Check number of actions ******************** 
+            try {
+                const resp_Check_Action = await fetch(url + 'actions/getViews');
+                // Resposne from employees router
+                const { views } = await resp_Check_Action.json();
+                console.log('views = ' + views);
+                let current_Views = []
+                current_Views.push({
+                    views
+                }); // add the item
+                sessionStorage.setItem('views', JSON.stringify(current_Views));
+                console.log(sessionStorage.getItem('views'));
+
+                // Get num of actions user
+                const NumOfActions = sessionStorage['NumOfActions'];
+
+                if (views > NumOfActions) {
+                    // Logout because - You reached to the maximum actions allowed
+                    const resp_Logout = await fetch(url + 'actions/logOutThisDay');
+                    location.href = url + 'auth';
+                }
+            } catch (error) {
+                console.error(error);
+            }
+
+            // Set the employees array into the table-body
+            const tableBody = document.getElementById('table-body');
+
+            // *********************** Get Users ************************
+            let users = [];
+            try {
+                // Get the list of users
+                const resp_users = await fetch(url + `users?NumOfActions=${8}`, {
+                    method: 'GET',
+                    headers: myHeaders,
+                });
+
+                // Resposne from users router
+                users = await resp_users.json();
+                //console.log(resultUsersCollection);
+                //users = resultUsersCollection.filter(user => user.NumOfActions);
+
+                console.log(users);
+
+            } catch (error) {
+                console.error(error);
+            }
+
+            tableBody.innerHTML = "";
+            let index = 1;
+            users.forEach(user => {
+
+                // table row
+                const tr = tableBody.insertRow();
+
+                // 'Id' - 'td' column
+                const tdId = tr.insertCell();
+                tdId.innerText = index++;
+
+                // 'Full Name' - 'td' column
+                const tdFullName = tr.insertCell();
+                tdFullName.innerText = user.FullName;
+
+                // 'Maximum Actions Allowed' - 'td' column
+                const td_Max_Actions_Allowed = tr.insertCell();
+                td_Max_Actions_Allowed.innerText = user.NumOfActions;
+
+                // Get num of actions user
+                const parse = JSON.parse(sessionStorage.getItem('views'))
+                const views = parse[0].views
+
+                // 'Current Actions Allowed Today' - 'td' column
+                const td_Current_Actions_Allowed_Today = tr.insertCell();
+                td_Current_Actions_Allowed_Today.innerText = user.NumOfActions - views;
+            });
+        }
+
+        // Redirect to employees page
+        const goEmployee = async () => {
+            location.href = url + 'emp';
+        }
+
+        // Redirect to departments page
+        const goDepartments = async () => {
+            location.href = url + 'dep';
+        }
+
+        // Redirect to shifts page
+        const goShifts = async () => {
+            location.href = url + 'shif';
+        }
+
+        const logOut = async () => {
+            location.href = url + 'auth';
+        }
+    </script>
+</body>
+
+</html>

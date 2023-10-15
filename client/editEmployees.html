@@ -56,6 +56,9 @@
                     <button type="submit" class="btn btn-danger" onclick="deleteEmployee()">
                         Delete
                     </button>
+                    <button type="submit" class="btn btn-warning" onclick="cancel()">
+                        Cancel
+                    </button>
                     <span class="d-block p-2"></span>
 
                 </form>
@@ -226,16 +229,66 @@
         }
 
         const registerShifts = async () => {
+            const parse = JSON.parse(sessionStorage.getItem('views'))
+
+            const views = parse[0].views
+            const userId = sessionStorage.getItem('id')
+            const NumOfActions = sessionStorage.getItem('NumOfActions')
+            const accessToken = sessionStorage.getItem('accessToken')
+
             // ****************** Increase number of actions ******************** 
             try {
-                const resp_Check_Action = await fetch(url + 'actions');
+                const resp_Increase_Action = await fetch(url + 'actions');
                 // Resposne from employees router
-                const { views } = await resp_Check_Action.json();
+                const { views } = await resp_Increase_Action.json();
                 let current_Views = []
                 current_Views.push({
                     views
                 }); // add the item
                 sessionStorage.setItem('views', JSON.stringify(current_Views));
+            } catch (error) {
+                console.error(error);
+            }
+
+            try {
+                // ***************************************************************
+                // ***************** Write to Actions Json File ******************
+                // ***************************************************************
+
+                // Read - Get All Actions from a json file
+                const resp_get_action = await fetch(url + 'actions/getAllActions', {
+                    method: 'GET',
+                    headers: { 'x-access-token': accessToken }
+                });
+
+                // Resposne from actions router
+                const result_get_action = await resp_get_action.json();
+
+                console.log(result_get_action);
+
+                const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
+                const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
+                console.log(date);
+
+                const obj_Action = {
+                    id: +userId,
+                    maxActions: +NumOfActions,
+                    date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
+                    actionsAllowed: NumOfActions - views
+                }
+
+                result_get_action.actions.push(obj_Action)
+
+                // Write new action
+                const resp_action = await fetch(url + 'actions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    body: JSON.stringify(result_get_action)
+                });
+
+                // Response from action router - Write New Action To Json File
+                const result_write_action = await resp_action.text();
+                console.log(result_write_action);
             } catch (error) {
                 console.error(error);
             }
@@ -316,15 +369,14 @@
                 wrapper.innerHTML = '<div class="alert alert-danger" role="alert">' + message + '</div>';
                 document.getElementById('editEmployeeForm').appendChild(wrapper);
             }
+        }
 
-
+        // Return to Back page
+        const cancel = () => {
+            window.history.back();
         }
 
         const logOut = async () => {
-            const resp = await fetch(url + 'actions/logout');
-
-            const data = await resp.text();
-
             location.href = url + 'auth';
         }
     </script>

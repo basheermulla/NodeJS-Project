@@ -1,6 +1,8 @@
 const Employee = require('../models/employeeModel.js');
 
-/* CRUD - Create, Read, Update, Delete */
+/****************************************************************************************************************************************/
+/************//* Work with - Employees Collection MongoDB *///     =======>     //* CRUD - Create, Read, Update, Delete *//**************/
+/****************************************************************************************************************************************/
 
 // GET - Get All Employees - Read
 const getAllEmployees =  () => {

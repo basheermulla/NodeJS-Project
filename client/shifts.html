@@ -32,6 +32,7 @@
         <div class="mb-3">
             <button type="submit" class="btn btn-success" onclick="goEmployee()"> Go to Employees Page </button>
             <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
+            <button type="submit" class="btn btn-dark" onclick="goUsers()"> Go to Users Page </button>
         </div>
         <table id="theFilterTable" class="table table-bordered table-hover">
             <thead id="table-head">
@@ -114,11 +115,13 @@
         // Get Employees and display them in a table
         const getEmployeesAndShifts = async () => {
 
-            // ****************** Check number of actions ******************** 
             try {
-                const resp_Check_Action = await fetch(url + 'actions');
+                // ***************************************************************
+                // ****************** Increase number of actions ********************
+                // *************************************************************** 
+                const resp_Increase_Action = await fetch(url + 'actions');
                 // Resposne from employees router
-                const { views } = await resp_Check_Action.json();
+                const { views } = await resp_Increase_Action.json();
                 console.log('views = ' + views);
                 let current_Views = []
                 current_Views.push({
@@ -127,14 +130,57 @@
                 sessionStorage.setItem('views', JSON.stringify(current_Views));
                 console.log(sessionStorage.getItem('views'));
 
+                // Get user id
+                const userId = sessionStorage['id'];
+
                 // Get num of actions user
                 const NumOfActions = sessionStorage['NumOfActions'];
 
                 if (views > NumOfActions) {
                     // Logout because - You reached to the maximum actions allowed
-                    //const resp_Logout = await fetch(url + 'actions/logOutThisDay');
+                    const resp_Logout = await fetch(url + 'actions/logOutThisDay');
                     location.href = url + 'auth';
                 }
+                // ***************************************************************
+                // ***************** Write to Actions Json File ******************
+                // ***************************************************************
+                else {
+                    // Read - Get All Actions from a json file
+                    const resp_get_action = await fetch(url + 'actions/getAllActions', {
+                        method: 'GET',
+                        headers: myHeaders,
+                    });
+
+                    // Resposne from actions router
+                    const result_get_action = await resp_get_action.json();
+
+                    console.log(result_get_action);
+
+                    const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
+                    const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
+                    console.log(date);
+
+                    const obj_Action = {
+                        id: +userId,
+                        maxActions: +NumOfActions,
+                        date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
+                        actionsAllowed: NumOfActions - views
+                    }
+
+                    result_get_action.actions.push(obj_Action)
+
+                    // Write new action
+                    const resp_action = await fetch(url + 'actions', {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: JSON.stringify(result_get_action)
+                    });
+
+                    // Response from action router - Write New Action To Json File
+                    const result_write_action = await resp_action.text();
+                    console.log(result_write_action);
+                }
+
             } catch (error) {
                 console.error(error);
             }
@@ -411,11 +457,12 @@
             location.href = url + 'dep';
         }
 
+        // Redirect to users page
+        const goUsers = async () => {
+            location.href = url + 'usersPage';
+        }
+
         const logOut = async () => {
-            const resp = await fetch(url + 'actions/logout');
-
-            const data = await resp.text();
-
             location.href = url + 'auth';
         }
     </script>
