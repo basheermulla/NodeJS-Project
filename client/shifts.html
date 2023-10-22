@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Employees Page</title>
+    <title>Shifts Page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -16,7 +16,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="getEmployeesAndShifts()" id="body">
+<body onload="loadData()" id="body">
 
     <div class="container" id="container">
         <span class="d-block p-1"></span>
@@ -24,31 +24,16 @@
         <span class="d-block p-2 bg-primary-subtle">
             <div class="d-inline p-2">
                 <span class="font-size-16" id="userFullName"></span>
-                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+                <a id="logout" href='authPage' class="text-danger font-size-16"> Log out </a>
             </div>
         </span>
-        <h2 class="p-2"> Shifts </span></h2>
+        <h2 class="p-2"> Shifts </h2>
         <span class="d-block p-2"></span>
         <div class="mb-3">
             <button type="submit" class="btn btn-success" onclick="goEmployee()"> Go to Employees Page </button>
             <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
             <button type="submit" class="btn btn-dark" onclick="goUsers()"> Go to Users Page </button>
         </div>
-        <table id="theFilterTable" class="table table-bordered table-hover">
-            <thead id="table-head">
-                <tr class="table-primary">
-                    <th style="width: 40px;">ID</th>
-                    <th>Shift Date</th>
-                    <th>Starting hour</th>
-                    <th>Ending hour</th>
-                    <th>Employees belong a shift</th>
-                    <th>Allocate employee to a shift</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
-
-        <span class="d-block p-1"></span>
         <div class="mb-3">
             <h4 class="p-2"> Create New Shift: </h4>
             <div class="col-sm-10">
@@ -69,7 +54,6 @@
                     <button type="submit" class="btn btn-primary" onclick="AddNewShift()"> Create New Shift </button>
                 </form>
             </div>
-
         </div>
         <div class="mb-3">
             <h4 class="p-2"> Change Existing Shift: </h4>
@@ -92,6 +76,21 @@
                     </button>
                 </form>
             </div>
+            <br />
+            <h4 class="p-2"> Show shifts and Allocate employee to Shift: </h4>
+            <table id="theFilterTable" class="table table-bordered table-hover">
+                <thead id="table-head">
+                    <tr class="table-primary">
+                        <th style="width: 40px;">ID</th>
+                        <th>Shift Date</th>
+                        <th>Starting hour</th>
+                        <th>Ending hour</th>
+                        <th>Employees belong a shift</th>
+                        <th>Allocate employee to a shift</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
         </div>
     </div>
 
@@ -100,7 +99,8 @@
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
-        uName.innerText = "Hello, " + sessionStorage['username'];
+        const username = sessionStorage['username'];
+        uName.innerText = "Hello, " + username;
 
         // Get aaccess Token client
         const accessToken = sessionStorage['accessToken'];
@@ -109,78 +109,42 @@
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("x-access-token", accessToken);
 
-        let employees_Data = [];
         let shifts_Data = [];
+        let employees_Data = [];
 
-        // Get Employees and display them in a table
-        const getEmployeesAndShifts = async () => {
+        const loadData = async () => {
+            // Update the actions before display the shifts table
+            const checkActions = await updateActions();
+            console.log(checkActions);
+            if (!checkActions) return;
 
+            // *********************** Get Shifts with aggregate [allocateEmployees] ************************
+            let shifts_aggregate = [];
             try {
-                // ***************************************************************
-                // ****************** Increase number of actions ********************
-                // *************************************************************** 
-                const resp_Increase_Action = await fetch(url + 'actions');
-                // Resposne from employees router
-                const { views } = await resp_Increase_Action.json();
-                console.log('views = ' + views);
-                let current_Views = []
-                current_Views.push({
-                    views
-                }); // add the item
-                sessionStorage.setItem('views', JSON.stringify(current_Views));
-                console.log(sessionStorage.getItem('views'));
+                // Get all shifts
+                const resp_shifts = await fetch(url + 'shifts/aggregate', {
+                    method: 'GET',
+                    headers: myHeaders
+                });
+                // Response from shifts router
+                shifts_aggregate = await resp_shifts.json();
+                console.log('shifts = ', shifts_aggregate);
+                // Set shifts array into shifts_Data Object
+                shifts_Data = shifts_aggregate;
 
-                // Get user id
-                const userId = sessionStorage['id'];
-
-                // Get num of actions user
-                const NumOfActions = sessionStorage['NumOfActions'];
-
-                if (views > NumOfActions) {
-                    // Logout because - You reached to the maximum actions allowed
-                    const resp_Logout = await fetch(url + 'actions/logOutThisDay');
-                    location.href = url + 'auth';
-                }
-                // ***************************************************************
-                // ***************** Write to Actions Json File ******************
-                // ***************************************************************
-                else {
-                    // Read - Get All Actions from a json file
-                    const resp_get_action = await fetch(url + 'actions/getAllActions', {
-                        method: 'GET',
-                        headers: myHeaders,
-                    });
-
-                    // Resposne from actions router
-                    const result_get_action = await resp_get_action.json();
-
-                    console.log(result_get_action);
-
-                    const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
-                    const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
-                    console.log(date);
-
-                    const obj_Action = {
-                        id: +userId,
-                        maxActions: +NumOfActions,
-                        date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
-                        actionsAllowed: NumOfActions - views
+                // Get all employees by use shifts aggregate data and map object
+                let map = {};
+                for (let shift of shifts_aggregate) {
+                    for (let employee of shift.allocateEmployees) {
+                        map[Object.values(employee._id).join('')] = employee;
                     }
-
-                    result_get_action.actions.push(obj_Action)
-
-                    // Write new action
-                    const resp_action = await fetch(url + 'actions', {
-                        method: 'POST',
-                        headers: myHeaders,
-                        body: JSON.stringify(result_get_action)
-                    });
-
-                    // Response from action router - Write New Action To Json File
-                    const result_write_action = await resp_action.text();
-                    console.log(result_write_action);
                 }
 
+                Object.values(map).forEach(employee => {
+                    employees_Data.push(employee)
+                });
+
+                console.log('employees = ', employees_Data);
             } catch (error) {
                 console.error(error);
             }
@@ -188,44 +152,9 @@
             // Set the shifts array into the table-body
             const tableBody = document.getElementById('table-body');
 
-            // *********************** Get Employees ************************
-            let employees = [];
-            try {
-                // Get the list of employees
-                const resp_emp = await fetch(url + 'employees', {
-                    method: 'GET',
-                    headers: myHeaders
-                });
-
-                // Resposne from employees router
-                employees = await resp_emp.json();
-
-                // Set employees array into employee_Data Object
-                employees_Data = employees;
-            } catch (error) {
-                console.error(error);
-            }
-
-            // *********************** Get Shifts ************************
-            let shifts = [];
-            try {
-                // Get all shifts
-                const resp_shifts = await fetch(url + 'shifts', {
-                    method: 'GET',
-                    headers: myHeaders
-                });
-                // Response from shifts router
-                shifts = await resp_shifts.json();
-
-                // Set shifts array into shifts_Data Object
-                shifts_Data = shifts;
-            } catch (error) {
-                console.error(error);
-            }
-
             tableBody.innerHTML = "";
             let index = 1;
-            shifts.forEach(shift => {
+            shifts_aggregate.forEach(shift => {
                 // table row
                 const tr = tableBody.insertRow();
 
@@ -252,24 +181,19 @@
                 const tdEnding_Hour = tr.insertCell();
                 tdEnding_Hour.innerText = shift.EndingHour;
 
-                // 'Employees that  Belong to this shift' - 'td' column
+                // 'Employees that Belong to this shift' - 'td' column
                 const tdBelong_Belong_Employees = tr.insertCell();
-                const filter_Employees = employees
-                    .filter(employee => employee.shiftsArr.find((id) => id === shift._id))
-                    .map(name => { return name.firstName + ' ' + name.lastName });
-
                 const listView = document.createElement('ol');
-                filter_Employees.forEach(employee => {
+                shift.allocateEmployees.forEach(employee => {
                     let listViewItem = document.createElement('li');
-                    let employee_Info = employee;
-                    listViewItem.appendChild(document.createTextNode(employee));
+                    listViewItem.appendChild(document.createTextNode(employee.firstName + ' ' + employee.lastName));
                     listView.appendChild(listViewItem);
                     tdBelong_Belong_Employees.append(listView);
                 });
 
-                // 'Allocate employee to a shift' - 'td' column
+                // 'Employees that NOT Belong to a shift' - 'td' column
                 const tdAllocate_Employees = tr.insertCell();
-                const filter_Allocate_Employees = employees
+                const filter_Allocate_Employees = employees_Data
                     .filter(employee => !employee.shiftsArr.find((id) => id === shift._id))
                     .map(name => {
                         return {
@@ -327,19 +251,19 @@
         const employeeChoosen = () => {
             const getId = () => document.querySelector('input[name="radioEmployee"]:checked').id;
 
-            const id = getId();
+            const shiftId = getId();
 
             // Do something on change:
             document.querySelectorAll('input[name="radioEmployee"]').forEach(elExample => {
                 elExample.addEventListener("input", () => {
                     console.log(elExample.id)
-                    if (elExample.id === id) {
+                    if (elExample.id === shiftId) {
                         const button = document.getElementById('add_Button_Employees - ' + elExample.id).disabled = false;
                         console.log('Yes')
                     }
                 });
 
-                if (elExample.id !== id) {
+                if (elExample.id !== shiftId) {
                     const button = document.getElementById('add_Button_Employees - ' + elExample.id).disabled = true;
                     console.log('No')
                 }
@@ -359,10 +283,6 @@
             const employee = employees_Data.find(employee => employee._id === employeeId);
 
             const obj_Employee_Collection = {
-                firstName: employee.firstName,
-                lastName: employee.lastName,
-                startWorkYear: employee.startWorkYear,
-                departmentID: employee.departmentId,
                 shiftsArr: employee.shiftsArr.concat(shiftId)
             };
 
@@ -374,9 +294,8 @@
                 });
 
                 const result = await resp_emp.text();
-                console.log(result)
 
-                location.href = url + 'shif';
+                location.href = url + 'shiftPage';
             } catch (error) {
                 console.error(error);
             }
@@ -401,7 +320,7 @@
                 // Response from shifts router - Add New Shift method
                 const result = await resp_shift.text();
 
-                location.href = url + 'shif';
+                location.href = url + 'shiftPage';
             } catch (error) {
                 console.error(error);
             }
@@ -435,13 +354,66 @@
                 });
 
                 const result = await resp_shift.text();
-                console.log(result);
 
                 document.getElementById('editDate').value = '';
                 document.getElementById('editStartingHour').value = '';
                 document.getElementById('editEndingHour').value = '';
 
-                location.href = url + 'shif';
+                location.href = url + 'shiftPage';
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        const updateActions = async () => {
+            try {
+                // ************************************************************************************
+                // *** Increase number of actions  & [Read] - Get All Actions from a json file ********
+                // ************************************************************************************      
+                const NumOfActions = sessionStorage['NumOfActions'];
+                const resp_Increase_Action = await fetch(`${url}actions/${username}/${NumOfActions}`, {
+                    method: 'GET',
+                    headers: myHeaders,
+                });
+
+                // Resposne from actions router
+                const { resp_Views: views, resp_Actions: actions } = await resp_Increase_Action.json();
+
+                sessionStorage.setItem('views', views.views);
+                console.log('views = ', views.views);
+                console.log('actions = ', actions.actions);
+                // Get user id
+                const userId = sessionStorage['id'];
+
+                if (views.views > +NumOfActions) {
+                    // Logout because - You reached to the maximum actions allowed
+                    location.href = url + 'authPage';
+                    return false;
+                }
+                // ************************************************************************************
+                // ************************ Write to Actions Json File ********************************
+                // ************************************************************************************
+                else {
+                    const obj_Action = {
+                        id: +userId,
+                        maxActions: +NumOfActions,
+                        date: new Date().toLocaleDateString('he-IL',
+                            { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
+                        actionsAllowed: +NumOfActions - views.views
+                    }
+                    actions.actions.push(obj_Action)
+
+                    // Write new action
+                    const resp_action = await fetch(url + 'actions', {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: JSON.stringify(actions)
+                    });
+
+                    // Response from action router - Write New Action To Json File
+                    const result_write_action = await resp_action.text();
+                    return true;
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -449,21 +421,17 @@
 
         // Redirect to employees page
         const goEmployee = async () => {
-            location.href = url + 'emp';
+            location.href = url + 'employeePage';
         }
 
         // Redirect to departments page
         const goDepartments = async () => {
-            location.href = url + 'dep';
+            location.href = url + 'departmentPage';
         }
 
         // Redirect to users page
         const goUsers = async () => {
             location.href = url + 'usersPage';
-        }
-
-        const logOut = async () => {
-            location.href = url + 'auth';
         }
     </script>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Employees Page</title>
+    <title>Add Employee Page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -16,20 +16,18 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body onload="getDepartments()">
-
+<body onload="loadData()">
     <div class="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
         <span class="d-block p-2 bg-primary-subtle">
             <div class="d-inline p-2">
                 <span class="font-size-16" id="userFullName"></span>
-                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+                <a id="logout" href='authPage' class="text-danger font-size-16"> Log out </a>
             </div>
         </span>
-        <h2 class="p-2"> New Employee </span></h2>
+        <h2 class="p-2"> New Employee </h2>
         <span class="d-block p-2"></span>
-
         <div class="col-sm-10">
             <form onclick="return false">
                 <div class="form-group">
@@ -69,13 +67,8 @@
         // Get aaccess Token client
         const accessToken = sessionStorage['accessToken'];
 
-        const views = JSON.parse(sessionStorage.getItem('views'))[0].views;
+        const views = sessionStorage.getItem('views');
         const NumOfActions = sessionStorage.getItem('NumOfActions');
-
-        // console.log(typeof views); 
-        // console.log(typeof NumOfActions);
-        // console.log(typeof Number(NumOfActions));
-        // console.log(typeof +NumOfActions);
 
         if (views === +NumOfActions) {
             window.history.back();
@@ -85,11 +78,8 @@
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("x-access-token", accessToken);
 
-        let department_Data = [];
-
-        // Get Departments and display them in a select
-        const getDepartments = async () => {
-            // *********************** Get departments ************************
+        const loadData = async () => {
+            // ********************************** Get departments ***********************************/
             let departments = [];
             try {
                 // Get all depatments
@@ -99,9 +89,7 @@
                 });
                 // Response from departments router
                 departments = await resp_dep.json();
-
-                // Set departments array into department_Data Object
-                department_Data = departments;
+                console.log('departments = ', departments);
             } catch (error) {
                 console.error(error);
             }
@@ -114,22 +102,23 @@
                 let el_opt = document.createElement("option");
                 el_opt.innerHTML = opt;
                 el_opt.value = opt;
+                el_opt.id = department._id;
                 selectElement.appendChild(el_opt);
             });
+
         }
 
         //Add new employee
         const AddNewEmployee = async () => {
             // Get the _id of selected Department
             let selectElement = document.querySelector('#selectDepartment');
-            const department_Name_Selected = selectElement.value;
-            const department = department_Data.find(dapartment => dapartment.Name === department_Name_Selected);
+            const departmentID = selectElement.options[selectElement.selectedIndex].id;
 
             const obj_Employee_Collection = {
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
                 startWorkYear: document.getElementById('startWorkYear').value,
-                departmentID: department._id
+                departmentID
             };
 
             try {
@@ -143,7 +132,7 @@
                 // Response from employees router - Add New Employee method
                 const result = await resp_emp.text();
 
-                location.href = url + 'emp';
+                location.href = url + 'employeePage';
             } catch (error) {
                 console.error(error);
             }
@@ -156,10 +145,6 @@
             document.getElementById('startWorkYear').value = '';
 
             window.history.back();
-        }
-
-        const logOut = async () => {
-            location.href = url + 'auth';
         }
     </script>
 </body>

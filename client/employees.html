@@ -20,19 +20,25 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline';" />
 </head>
 
-<body onload="getEmployees()" id="body">
-
-    <div class="container" id="container">
+<body onload="loadData()" id="body">
+    <div class="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
         <span class="d-block p-2 bg-primary-subtle">
             <div class="d-inline p-2">
                 <span class="font-size-16" id="userFullName"></span>
-                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+                <a id="logout" href='authPage' class="text-danger font-size-16"> Log out </a>
             </div>
         </span>
-        <h2 class="p-2"> Employees </span></h2>
-
+        <div class="row">
+            <div class="col">
+                <h2 class="p-2"> Employees </h2>
+            </div>
+            <div class="col align-items-center">
+                <p id="message" style="margin-bottom: 0; padding-top: 17px; text-align: center; "></p>
+            </div>
+            <div class="col"></div>
+        </div>
         <div class="mb-3">
             <label class="form-label"> Display employees by depatment: </label>
             <select class="form-select" id="filter-select" aria-label="Default select example" onchange="myFilter2()">
@@ -41,8 +47,15 @@
         </div>
         <div class="input-group data-filter">
             <span class="input-group-text">&#x1F50E;&#xFE0E;</span>
-            <input type="text" class="form-control" placeholder="Display employees by depatment without reduce actions" onkeyup="myFilter()"
-                id="myFilterInput">
+            <input type="text" class="form-control" placeholder="Display employees by depatment without reduce actions"
+                onkeyup="myFilter()" id="myFilterInput">
+        </div>
+        <br />
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" onclick="AddNewEmployee()"> New Employee </button>
+            <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
+            <button type="submit" class="btn btn-warning" onclick="goShifts()"> Go to Shifts Page </button>
+            <button type="submit" class="btn btn-dark" onclick="goUsers()"> Go to Users Page </button>
         </div>
         <span class="d-block p-2"></span>
         <table id="theFilterTable" class="table table-bordered table-hover">
@@ -56,27 +69,29 @@
             </thead>
             <tbody id="table-body"></tbody>
         </table>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary" onclick="AddNewEmployee()"> New Employee </button>
-            <button type="submit" class="btn btn-secondary" onclick="goDepartments()"> Go to Department Page </button>
-            <button type="submit" class="btn btn-warning" onclick="goShifts()"> Go to Shifts Page </button>
-            <button type="submit" class="btn btn-dark" onclick="goUsers()"> Go to Users Page </button>
-        </div>
         <br /><br />
         <p id="cookie"></p>
     </div>
+
 
     <script>
         const url = 'http://127.0.0.1:3001/'
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
-        uName.innerText = "Hello, " + sessionStorage['username'];
+        const username = sessionStorage['username'];
+        uName.innerText = "Hello, " + username;
 
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('document.cookie = ', document.cookie);
             let pre = document.getElementById('cookie');
             pre.textContent = document.cookie
+
+            let msg = document.getElementById('message');
+            msg.textContent = '<      ' + sessionStorage['message'] + '      >'
         });
+
+
 
         // Get aaccess Token client
         const accessToken = sessionStorage['accessToken'];
@@ -85,139 +100,44 @@
         myHeaders.append("Content-Type", "application/json");
         myHeaders.append("x-access-token", accessToken);
 
-        // Set the employees array into the table-body
-        const tableBody = document.getElementById('table-body');
-
-        // Get Employees and display them in a table
-        const getEmployees = async () => {
-            try {
-                // ***************************************************************
-                // ****************** Increase number of actions ********************
-                // *************************************************************** 
-                const resp_Increase_Action = await fetch(url + 'actions');
-                // Resposne from employees router
-                const { views } = await resp_Increase_Action.json();
-                console.log('views = ' + views);
-                let current_Views = []
-                current_Views.push({
-                    views
-                }); // add the item
-                sessionStorage.setItem('views', JSON.stringify(current_Views));
-                console.log(sessionStorage.getItem('views'));
-
-                // Get user id
-                const userId = sessionStorage['id'];
-
-                // Get num of actions user
-                const NumOfActions = sessionStorage['NumOfActions'];
-
-                if (views > NumOfActions) {
-                    // Logout because - You reached to the maximum actions allowed
-                    const resp_Logout = await fetch(url + 'actions/logOutThisDay');
-                    location.href = url + 'auth';
-                }
-                // ***************************************************************
-                // ***************** Write to Actions Json File ******************
-                // ***************************************************************
-                else {
-                    // Read - Get All Actions from a json file
-                    const resp_get_action = await fetch(url + 'actions/getAllActions', {
-                        method: 'GET',
-                        headers: myHeaders,
-                    });
-
-                    // Resposne from actions router
-                    const result_get_action = await resp_get_action.json();
-
-                    console.log(result_get_action);
-
-                    const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
-                    const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
-                    console.log(date);
-
-                    const obj_Action = {
-                        id: +userId,
-                        maxActions: +NumOfActions,
-                        date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
-                        actionsAllowed: NumOfActions - views
-                    }
-
-                    result_get_action.actions.push(obj_Action)
-
-                    // Write new action
-                    const resp_action = await fetch(url + 'actions', {
-                        method: 'POST',
-                        headers: myHeaders,
-                        body: JSON.stringify(result_get_action)
-                    });
-
-                    // Response from action router - Write New Action To Json File
-                    const result_write_action = await resp_action.text();
-                    console.log(result_write_action);
-                }
-
-            } catch (error) {
-                console.error(error);
-            }
-
-            // *********************** Get Employees ************************
-            let employees = [];
+        const loadData = async () => {
+            // Update the actions before display the emloyees table
+            const checkActions = await updateActions();
+            console.log(checkActions);
+            if (!checkActions) return;
+            // ************* Get Employees with aggregate with [departments]+[shifts] ******************/
+            let employees_aggregate = [];
+            let departments = [];
             try {
                 // Get the list of employees
-                const resp_emp = await fetch(url + 'employees', {
+                const resp_emp = await fetch(url + 'employees/aggregate', {
                     method: 'GET',
                     headers: myHeaders,
-                    // withCredntials: true,
+                    //withCredntials: true,
                     // credentials: 'include',
                 });
 
-                let res_Headers = {};
-                resp_emp.headers.forEach((key, val) => {
-                    res_Headers[val] = key;
-                });
-                console.log(res_Headers);
-                console.log('cookie = ' + document.cookie);
-
                 // Resposne from employees router
-                employees = await resp_emp.json();
+                employees_aggregate = await resp_emp.json();
+                console.log('employees = ', employees_aggregate);
 
-                console.log(employees);
+                // Get all departments by use employees aggregate data and map object
+                let map = {};
+                for (let employee of employees_aggregate) {
+                    map[Object.values(employee.departments[0]._id).join('')] = employee.departments[0];
+                }
 
-            } catch (error) {
-                console.error(error);
-            }
-
-            // *********************** Get Shifts ************************
-            let shifts = [];
-            try {
-                // Get all shifts
-                const resp_shifts = await fetch(url + 'shifts', {
-                    method: 'GET',
-                    headers: myHeaders
+                Object.values(map).forEach(department => {
+                    departments.push(department)
                 });
-                // Response from shifts router
-                shifts = await resp_shifts.json();
-            } catch (error) {
-                console.error(error);
-            }
 
-            // *********************** Get departments ************************
-            let departments = [];
-            try {
-                // Get all depatments
-                const resp_dep = await fetch(url + 'departments', {
-                    method: 'GET',
-                    headers: myHeaders
-                });
-                // Response from departments router
-                departments = await resp_dep.json();
+                console.log('departments = ', departments);
             } catch (error) {
                 console.error(error);
             }
 
             // Create options select
             const select = document.getElementById("filter-select");
-
             for (let i = 0; i < departments.length; i++) {
                 const option = document.createElement("option");
                 option.textContent = departments[i].Name;
@@ -225,9 +145,12 @@
                 select.appendChild(option);
             };
 
+            // Set the employees array into the table-body
+            const tableBody = document.getElementById('table-body');
+
             tableBody.innerHTML = "";
             let index = 1;
-            employees.forEach(employee => {
+            employees_aggregate.forEach(employee => {
                 // table row
                 const tr = tableBody.insertRow();
 
@@ -238,7 +161,7 @@
                 // 'Full Name' - 'td' column
                 const tdFullName = tr.insertCell();
                 const nameLink = document.createElement('a');
-                nameLink.href = url + 'editEmp';
+                nameLink.href = url + 'editEmployeePage';
                 nameLink.onclick = () => sessionStorage.setItem('employeeId', employee._id);
                 nameLink.innerText = employee.firstName + ' ' + employee.lastName;
                 tdFullName.appendChild(nameLink);
@@ -246,31 +169,25 @@
                 // 'Department' - 'td' column
                 const tdDepartment = tr.insertCell();
                 const dapartmentLink = document.createElement('a');
-                dapartmentLink.href = url + 'editDep';
+                dapartmentLink.href = url + 'editDepartmentPage';
                 dapartmentLink.onclick = () => sessionStorage.setItem('departmentId', employee.departmentID);
-                const Department_Name = departments.find(dapartment => dapartment._id === employee.departmentID)
-                dapartmentLink.innerText = Department_Name.Name;
+                dapartmentLink.innerText = employee.departments[0].Name;
                 tdDepartment.appendChild(dapartmentLink);
 
                 // 'List Of Shifts' - 'td' column
                 const tdShifts = tr.insertCell();
                 const listView = document.createElement('ol');
-                shifts.forEach(shift => {
-                    if (employee.shiftsArr.includes(shift._id)) {
-                        let listViewItem = document.createElement('li');
-                        let shift_Info = new Date(shift.Date).toLocaleDateString() + ' [ ' + shift.StartingHour + ' ] - [ ' + shift.EndingHour + ' ]';
-                        listViewItem.appendChild(document.createTextNode(shift_Info));
-                        listView.appendChild(listViewItem);
-                        tdShifts.append(listView);
-                    }
+                employee.shifts.forEach(shift => {
+                    let listViewItem = document.createElement('li');
+                    let shift_Info = new Date(shift.Date).toLocaleDateString() + ' [ ' + shift.StartingHour + ' ] - [ ' + shift.EndingHour + ' ]';
+                    listViewItem.appendChild(document.createTextNode(shift_Info));
+                    listView.appendChild(listViewItem);
+                    tdShifts.append(listView);
                 });
             });
         }
 
         const myFilter = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
-
             const input = document.getElementById("myFilterInput");
             const filter = input.value.toUpperCase();
             const table = document.getElementById("theFilterTable");
@@ -289,79 +206,12 @@
         }
 
         const myFilter2 = async () => {
-            // Get aaccess Token client
-            const accessToken = sessionStorage['accessToken'];
+            // Update the actions before filter employees by department
+            const checkActions = await updateActions();
+            console.log(checkActions);
+            if (!checkActions) return;
 
-            try {
-                // ***************************************************************
-                // ****************** Increase number of actions ********************
-                // *************************************************************** 
-                const resp_Increase_Action = await fetch(url + 'actions');
-                // Resposne from employees router
-                const { views } = await resp_Increase_Action.json();
-                console.log('views = ' + views);
-                let current_Views = []
-                current_Views.push({
-                    views
-                }); // add the item
-                sessionStorage.setItem('views', JSON.stringify(current_Views));
-                console.log(sessionStorage.getItem('views'));
-
-                // Get user id
-                const userId = sessionStorage['id'];
-
-                // Get num of actions user
-                const NumOfActions = sessionStorage['NumOfActions'];
-
-                if (views > NumOfActions) {
-                    // Logout because - You reached to the maximum actions allowed
-                    const resp_Logout = await fetch(url + 'actions/logOutThisDay');
-                    location.href = url + 'auth';
-                }
-                // ***************************************************************
-                // ***************** Write to Actions Json File ******************
-                // ***************************************************************
-                else {
-                    // Read - Get All Actions from a json file
-                    const resp_get_action = await fetch(url + 'actions/getAllActions', {
-                        method: 'GET',
-                        headers: myHeaders,
-                    });
-
-                    // Resposne from actions router
-                    const result_get_action = await resp_get_action.json();
-
-                    console.log(result_get_action);
-
-                    const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
-                    const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
-                    console.log(date);
-
-                    const obj_Action = {
-                        id: +userId,
-                        maxActions: +NumOfActions,
-                        date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
-                        actionsAllowed: NumOfActions - views
-                    }
-
-                    result_get_action.actions.push(obj_Action)
-
-                    // Write new action
-                    const resp_action = await fetch(url + 'actions', {
-                        method: 'POST',
-                        headers: myHeaders,
-                        body: JSON.stringify(result_get_action)
-                    });
-
-                    // Response from action router - Write New Action To Json File
-                    const result_write_action = await resp_action.text();
-                    console.log(result_write_action);
-                }
-
-            } catch (error) {
-                console.error(error);
-            }
-
+            console.log('views = after');
             let selectElement = document.querySelector('#filter-select');
             const filter = selectElement.value.toUpperCase();
             const table = document.getElementById("theFilterTable");
@@ -385,31 +235,81 @@
                     tr[i].style.display = "";
                 }
             }
+        }
 
+        const updateActions = async () => {
+            try {
+                // ************************************************************************************
+                // *** Increase number of actions  & [Read] - Get All Actions from a json file ********
+                // ************************************************************************************    
+                const NumOfActions = sessionStorage['NumOfActions'];
+                const resp_Increase_Action = await fetch(`${url}actions/${username}/${NumOfActions}`, {
+                    method: 'GET',
+                    headers: myHeaders,
+                });
+
+                // Resposne from actions router
+                const { resp_Views: views, resp_Actions: actions } = await resp_Increase_Action.json();
+
+                sessionStorage.setItem('views', views.views);
+                console.log('views = ', views.views);
+                console.log('actions = ', actions.actions);
+                // Get user id
+                const userId = sessionStorage['id'];
+
+                if (views.views > +NumOfActions) {
+                    // Logout because - You reached to the maximum actions allowed
+                    location.href = url + 'authPage';
+                    return false;
+                }
+                // ************************************************************************************
+                // ************************ Write to Actions Json File ********************************
+                // ************************************************************************************
+                else {
+                    const obj_Action = {
+                        id: +userId,
+                        maxActions: +NumOfActions,
+                        date: new Date().toLocaleDateString('he-IL',
+                            { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
+                        actionsAllowed: +NumOfActions - views.views
+                    }
+                    actions.actions.push(obj_Action)
+
+                    // Write new action
+                    const resp_action = await fetch(url + 'actions', {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: JSON.stringify(actions)
+                    });
+
+                    // Response from action router - Write New Action To Json File
+                    const result_write_action = await resp_action.text();
+                    return true;
+                }
+                console.log('Restart')
+            } catch (error) {
+                console.error(error);
+            }
         }
 
         // Add new employee
         const AddNewEmployee = async () => {
-            location.href = url + 'newEmp';
+            location.href = url + 'newEmployeePage';
         }
 
         // Redirect to departments page
         const goDepartments = async () => {
-            location.href = url + 'dep';
+            location.href = url + 'departmentPage';
         }
 
         // Redirect to shifts page
         const goShifts = async () => {
-            location.href = url + 'shif';
+            location.href = url + 'shiftPage';
         }
 
         // Redirect to users page
         const goUsers = async () => {
             location.href = url + 'usersPage';
-        }
-
-        const logOut = async () => {
-            location.href = url + 'auth';
         }
     </script>
 </body>

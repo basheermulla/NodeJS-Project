@@ -17,16 +17,13 @@
 </head>
 
 <body>
-
-    <div class="container">
+    <div class="container" id="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
-        <span class="d-block p-2 bg-primary-subtle"> 
-            <div class="d-inline p-2">
-                
-            </div>
+        <span class="d-block p-2 bg-primary-subtle">
+            <div class="d-inline p-2"></div>
         </span>
-        <h2 class="p-2"> Login </span></h2>
+        <h2 class="p-2"> Login </h2>
         <span class="d-block p-2"></span>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">@</span>
@@ -38,49 +35,76 @@
             <input type="email" class="form-control" id="email" placeholder="name@example.com">
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary" onclick="login()"> Login </button>
+            <button type="submit" id="login_Btn" class="btn btn-primary" onclick="login()"> Login </button>
         </div>
     </div>
 
     <script>
-
         const url = 'http://127.0.0.1:3001/'
 
+
+
         const login = async () => {
-            
+
             const loginData = {
                 username: document.getElementById('username').value,
                 email: document.getElementById('email').value
             }
-            
-            sessionStorage['username'] = loginData.username
-            
+            console.log(loginData);
             const resp = await fetch(url + 'auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginData)
             });
 
-            const  data = await resp.json();
+            const data = await resp.json();
             console.log(data);
-
+            sessionStorage['username'] = loginData.username
             sessionStorage['accessToken'] = data.accessToken;
             sessionStorage['NumOfActions'] = data.NumOfActions;
             sessionStorage['id'] = data.id;
-            console.log(sessionStorage['accessToken']);
-            console.log(sessionStorage['NumOfActions']);
-            console.log(sessionStorage['id']);
+            console.log('username = ', sessionStorage['username']);
+            console.log('accessToken = ', sessionStorage['accessToken']);
+            console.log('NumOfActions = ', sessionStorage['NumOfActions']);
+            console.log('id = ', sessionStorage['id']);
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
 
-            console.log(url + 'emp');
-            
-            location.href = url + 'emp';
-            //location.href = './employees.html';
+            //-------------------------- Check if the user can perform actions today -------------------//
+            const username = sessionStorage['username'];
+            const NumOfActions = sessionStorage['NumOfActions'];
+            const resp_CheckViews = await fetch(`${url}actions/checkViews/${username}/${NumOfActions}`, {
+                method: 'GET',
+                headers: myHeaders,
+            });
+
+            // Resposne from actions router
+            const result = await resp_CheckViews.json();
+            console.log('result = ', result);
+            console.log('result = ', result.message);
+            const message = result.message;
+            sessionStorage['message'] = message;
+            if (message === 'You can do more actions today' || message === 'Welcome, this is the first visited time on this site today') {
+                location.href = url + 'employeePage';
+            } else {
+                // Display alert - That you have reached your amount of allowed actions today
+                const wrapper = document.createElement("div");
+                wrapper.innerHTML =
+                    '<br/>' + '<div class="mb-3" id="rejectionAlert">' +
+                        /*      */'<br/>' + '<div class="alert alert-danger" role="alert">' + message + '</div>' +
+                        /*      */'<button type="submit" class="btn btn-danger" onclick="goToLogin()"> Cancel </button>' +
+                    /*      */'</div>'
+                document.getElementById('container').appendChild(wrapper);
+
+                document.getElementById('login_Btn').disabled = true;
+            }
+        }
+
+        // Redirect to Login page
+        const goToLogin = () => {
+            location.href = url + 'authPage';
         }
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

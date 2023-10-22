@@ -11,6 +11,36 @@ const router = express.Router();
 /****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 
+// aggregate - [|*| Employee-->{departmentID}--> Department |*|]-[|*| Employee-->{ [shiftsArr] }--> Shift |*|] 
+router.get('/aggregate', async (req, res) => {
+    //console.log(req.headers);
+
+    const token = req.headers['x-access-token'];
+    // If 'username' and 'password' are exist in DB:
+    if (!token) {
+        res.status(401).send('No token provided') // Unauthorized
+    }
+ 
+    const { ACCESS_SECRET_TOKEN } = process.env;
+ 
+    jwt.verify(token, ACCESS_SECRET_TOKEN, async (err, data) => {
+        if (err) {
+            res.status(500).send('Fail to authenticate token')
+        }
+
+    // The User has been Authorized ********************** Get All Employees *******
+    try {
+        const employees = await employeesBLL.aggregateAllEmployees();
+        
+        res.send(employees);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+    }
+    // *****************************************************************************
+    });
+});
+
 // Get All Employees
 router.get('/', async (req, res) => {
     //console.log(req.headers);
@@ -31,7 +61,7 @@ router.get('/', async (req, res) => {
     // The User has been Authorized ********************** Get All Employees *******
     try {
         const employees = await employeesBLL.getAllEmployees();
-
+        
         res.send(employees);
     } catch (error) {
         console.error(error);

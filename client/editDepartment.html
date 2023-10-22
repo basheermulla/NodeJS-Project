@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Employees Page</title>
+    <title>Edit Department Page</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -17,45 +17,41 @@
 </head>
 
 <body onload="loadData()">
-
     <div class="container">
         <span class="d-block p-1"></span>
         <span class="d-block p-5 bg-primary-subtle"></span>
         <span class="d-block p-2 bg-primary-subtle">
             <div class="d-inline p-2">
                 <span class="font-size-16" id="userFullName"></span>
-                <a class="text-danger font-size-16" onclick="logOut()"> Log out </a>
+                <a id="logout" href='authPage' class="text-danger font-size-16"> Log out </a>
             </div>
         </span>
         <h2 class="p-2"> Edit Department </h2>
         <span class="d-block p-2"></span>
-
         <div class="col-sm-10">
-            <form onclick="return false">
-                <div class="form-group">
-                    <label> Name </label>
-                    <input type="text" class="form-control" id="departmentName" placeholder="Department Name" />
-                </div>
-                <br />
-                <label> Select Manager </label>
-                <select id="departmentManagerName" class="form-select">
-
-                </select>
-                <br />
-                <button type="submit" class="btn btn-primary" onclick="updateDepartment()">
-                    Update
-                </button>
-                <button type="submit" class="btn btn-danger" onclick="deleteDepartment()">
-                    Delete
-                </button>
-                <button type="submit" class="btn btn-warning" onclick="cancel()">
-                    Cancel
-                </button>
-            </form>
+            <div class="row" id="editDepartmentForm">
+                <form onclick="return false">
+                    <div class="form-group">
+                        <label> Name </label>
+                        <input type="text" class="form-control" id="departmentName" placeholder="Department Name" />
+                    </div>
+                    <br />
+                    <label> Select Manager </label>
+                    <select id="departmentManagerName" class="form-select"></select>
+                    <br />
+                    <button type="submit" class="btn btn-primary" onclick="updateDepartment()">
+                        Update
+                    </button>
+                    <button type="submit" class="btn btn-danger" onclick="deleteAlert()">
+                        Delete
+                    </button>
+                    <button type="submit" class="btn btn-warning" onclick="cancel()">
+                        Cancel
+                    </button>
+                </form>
+            </div>
         </div>
-
         <span class="d-block p-2"></span>
-
         <div class="col-sm-10">
             <h4 class="p-2"> Allocate employees to a department: </h4>
             <form onclick="return false">
@@ -76,55 +72,62 @@
 
         // Show Full Name and "Log Out" link in the head of this page
         const uName = document.getElementById('userFullName');
-        uName.innerText = "Hello, " + sessionStorage['username'];
-        // Get aaccess Token client
+        const username = sessionStorage['username'];
+        uName.innerText = "Hello, " + username;
+
+        // Get data from sessionStorage
         const accessToken = sessionStorage['accessToken'];
-
-        const views = JSON.parse(sessionStorage.getItem('views'))[0].views;
+        const views = sessionStorage.getItem('views');
         const NumOfActions = sessionStorage.getItem('NumOfActions');
-
-        // console.log(typeof views); 
-        // console.log(typeof NumOfActions);
-        // console.log(typeof Number(NumOfActions));
-        // console.log(typeof +NumOfActions);
-
+        const departmentId = sessionStorage.getItem('departmentId');
+        console.log(departmentId);
         if (views === +NumOfActions) {
-            location.href = url + 'auth';
+            location.href = url + 'authPage';
         }
 
-        const departmentId = sessionStorage.getItem('departmentId');
-
-        console.log(departmentId);
-
-        let employees_Data = [];
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("x-access-token", accessToken);
 
         const loadData = async () => {
-            // Get the edited department by id
-            const resp_dep_by_id = await fetch(`${url}departments/${departmentId}`, {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
+            // ************* Get Employees with aggregate with [departments]+[shifts] ******************/
+            let employees_aggregate = [];
+            let employee_Manager_department = [];
+            let all_departments_Data = [];
+            try {
+                // Get the list of employees
+                const resp_emp = await fetch(url + 'employees/aggregate', {
+                    method: 'GET',
+                    headers: myHeaders,
+                });
 
-            // Resposne from departments router - *** GET - Get Department By Id ***
-            const department = await resp_dep_by_id.json();
+                // Resposne from employees router
+                employees_aggregate = await resp_emp.json();
+                console.log('employees_aggregate = ', employees_aggregate);
+                // Get the edited department by id
+                employee_Manager_department = employees_aggregate.find(employee => employee._id === employee.departments[0].Manager && employee.departmentID === departmentId);
+                console.log('employee_Manager_department = ', employee_Manager_department);
+
+                // Get all departments by use employees aggregate data and map object
+                let map_dapartments = {};
+                for (let employee of employees_aggregate) {
+                    map_dapartments[Object.values(employee.departments[0]._id).join('')] = employee.departments[0];
+                }
+                Object.values(map_dapartments).forEach(department => {
+                    all_departments_Data.push(department)
+                });
+
+                console.log('all_departments_Data = ', all_departments_Data);
+            } catch (error) {
+                console.error(error);
+            }
 
             // Set the values of the department into the form ( Name, Manager )
-            document.getElementById('departmentName').value = department.Name;
-
-            // Get the list of employees
-            const resp_emp = await fetch(url + 'employees', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-            // Resposne from employees router
-            const employees = await resp_emp.json();
-
-            // Set employees array into employees_Data Object
-            employees_Data = employees;
+            document.getElementById('departmentName').value = employee_Manager_department.departments[0].Name;
 
             // Get the list of employees department by departmentID employee
-            const department_employees = employees.filter(employee => employee.departmentID === departmentId);
-
+            const department_employees = employees_aggregate.filter(employee => employee.departmentID === departmentId);
+            console.log('department_employees = ', department_employees);
             // Set the employee array into the select element
             let selectElement = document.querySelector('#departmentManagerName');
             department_employees.forEach(employee => {
@@ -136,28 +139,14 @@
             });
 
             // Set the value of the select by department's manager name
-            const departments_Manager = employees.find(employee => employee._id === department.Manager);
-            selectElement.value = departments_Manager.firstName + ' ' + departments_Manager.lastName;
-
-            //************************* Allocate employees to a department *****************************//
-            // Get the list of departments
-            const resp_dep = await fetch(url + 'departments', {
-                method: 'GET',
-                headers: { 'x-access-token': accessToken }
-            });
-
-            // Resposne from departments router
-            const departments = await resp_dep.json();
-
-            // Set manager Ids array from department collection
-            const department_Manager_Ids = departments.map(manager => { return manager.Manager });
+            selectElement.value = employee_Manager_department.firstName + ' ' + employee_Manager_department.lastName;
 
             // Set the employee array into the select element
             let addSelectElement = document.querySelector('#addEmployees');
 
             // Filter employees that not belong to that department and not in manager role
-            const filter_Employees = employees.filter(employee => employee.departmentID !== departmentId && !department_Manager_Ids.includes(employee._id));
-            console.log(filter_Employees)
+            const filter_Employees = employees_aggregate.filter(employee => employee.departmentID !== departmentId && employee._id !== employee.departments[0].Manager);
+            console.log('filter_Employees = ', filter_Employees)
             filter_Employees.forEach(employee => {
                 const opt = employee.firstName + ' ' + employee.lastName;
                 let el_opt = document.createElement("option");
@@ -178,117 +167,53 @@
         }
 
         const allocateEmployee = async () => {
-            const parse = JSON.parse(sessionStorage.getItem('views'))
-
-            const views = parse[0].views
-            const userId = sessionStorage.getItem('id')
-            const NumOfActions = sessionStorage.getItem('NumOfActions')
-            const accessToken = sessionStorage.getItem('accessToken')
-
-            try {
-                // ***************************************************************
-                // ***************** Write to Actions Json File ******************
-                // ***************************************************************
-
-                // Read - Get All Actions from a json file
-                const resp_get_action = await fetch(url + 'actions/getAllActions', {
-                    method: 'GET',
-                    headers: { 'x-access-token': accessToken }
-                });
-
-                // Resposne from actions router
-                const result_get_action = await resp_get_action.json();
-
-                console.log(result_get_action);
-
-                const offset = (3) * (60) * (60) * (1000); // 3 hours * 60 minutes * 60 seconds * 1000 ms
-                const date = new Date(new Date().getTime() + offset).toUTCString().replace(/ GMT$/, "")
-                console.log(date);
-
-                const obj_Action = {
-                    id: +userId,
-                    maxActions: +NumOfActions,
-                    date: new Date().toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/'),
-                    actionsAllowed: NumOfActions - views
-                }
-
-                result_get_action.actions.push(obj_Action)
-
-                // Write new action
-                const resp_action = await fetch(url + 'actions', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
-                    body: JSON.stringify(result_get_action)
-                });
-
-                // Response from action router - Write New Action To Json File
-                const result_write_action = await resp_action.text();
-                console.log(result_write_action);
-            } catch (error) {
-                console.error(error);
-            }
-
-            // ****************** Increase number of actions ******************** 
-            try {
-                const resp_Increase_Action = await fetch(url + 'actions');
-                // Resposne from employees router
-                const { views } = await resp_Increase_Action.json();
-                let current_Views = []
-                current_Views.push({
-                    views
-                }); // add the item
-                sessionStorage.setItem('views', JSON.stringify(current_Views));
-            } catch (error) {
-                console.error(error);
-            }
-
+            // Get the id of selected Employee
             let selectElement = document.querySelector('#addEmployees');
             const id = selectElement.options[selectElement.selectedIndex].id;
 
-            const employee_to_update = employees_Data.find(employee => employee._id === id)
-            console.log(employee_to_update)
             const obj_Employee_Collection = {
-                firstName: employee_to_update.firstName,
-                lastName: employee_to_update.lastName,
-                startWorkYear: employee_to_update.startWorkYear,
                 departmentID: departmentId
             };
 
             try {
+                // Update employee
                 const resp_emp = await fetch(`${url}employees/${id}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Employee_Collection)
                 });
 
+                // Response from employees router - Update Employee method
                 const result = await resp_emp.text();
 
-                location.href = url + 'editDep';
+                location.href = url + 'departmentPage';
             } catch (error) {
                 console.error(error);
             }
         }
 
         const updateDepartment = async () => {
-            // Get the _id of selected Employee
+            // Get the id of selected Employee
             let selectElement = document.querySelector('#departmentManagerName');
-            const employee_Id_Selected = selectElement.options[selectElement.selectedIndex].id;
+            const id = selectElement.options[selectElement.selectedIndex].id;
 
             const obj_Department_Collection = {
                 Name: document.getElementById('departmentName').value,
-                Manager: employee_Id_Selected
+                Manager: id
             };
-
+            console.log(obj_Department_Collection);
             try {
+                // Update department
                 const resp_dep = await fetch(`${url}departments/${departmentId}`, {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json', 'x-access-token': accessToken },
+                    headers: myHeaders,
                     body: JSON.stringify(obj_Department_Collection)
                 });
 
+                // Response from departments router - Update Department method
                 const result = await resp_dep.text();
 
-                location.href = url + 'emp';
+                location.href = url + 'departmentPage';
             } catch (error) {
                 console.error(error);
             }
@@ -296,26 +221,39 @@
 
         const deleteDepartment = async () => {
             try {
-                const resp_emp = await fetch(`${url}employees/${employeeId}`, {
+                const resp_dep = await fetch(`${url}departments/${departmentId}`, {
                     method: 'DELETE',
-                    headers: { 'x-access-token': accessToken }
+                    headers: myHeaders
                 });
 
-                const result = await resp_emp.text();
-
-                location.href = url + 'emp';
+                const result = await resp_dep.text();
+                console.log(result);
+                location.href = url + 'departmentPage';
             } catch (error) {
                 console.error(error);
             }
         }
 
+        const deleteAlert = () => {
+            const message = 'Are you sure you want to delete this department?'
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML =
+                '<div class="mb-3" id="deleteAlert">' +
+                /*   */'<br/>' + '<div class="alert alert-danger" role="alert">' + message + '</div>' +
+                /*   */'<button type="submit" class="btn btn-danger" onclick="deleteDepartment()"> Confirm </button>' + '&nbsp' +
+                /*   */'<button type="submit" class="btn btn-success" onclick="hideDeleteAlert()"> Cancel </button>' +
+                '</div>'
+            document.getElementById('editDepartmentForm').appendChild(wrapper);
+        }
+
+        const hideDeleteAlert = () => {
+            const deleteAlert = document.getElementById('deleteAlert');
+            deleteAlert.parentNode.removeChild(deleteAlert);
+        }
+
         // Return to Back page
         const cancel = () => {
             window.history.back();
-        }
-
-        const logOut = async () => {
-            location.href = url + 'auth';
         }
     </script>
 
