@@ -11,6 +11,34 @@ const router = express.Router();
 /****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 
+// aggregate - {***** Shift -->[ [employees] = array Json with All employees ] *****} -------------> {***** Employee *****}
+router.get('/aggregate', (req, res) => {
+    const token = req.headers['x-access-token'];
+    // If 'username' and 'password' are exist in DB:
+    if (!token) {
+        res.status(401).send('No token provided') // Unauthorized
+    }
+
+    const { ACCESS_SECRET_TOKEN } = process.env;
+
+    jwt.verify(token, ACCESS_SECRET_TOKEN, async (err, data) => {
+        if (err) {
+            res.status(500).send('Fail to authenticate token')
+        }
+
+        // The User has been Authorized ********************** Get All Shifts *******
+        try {
+            const shifts = await shiftsBLL.aggregateAllShifts();
+            
+            res.send(shifts);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+        }
+        // *****************************************************************************
+    });
+});
+
 // Get All Shifts
 router.get('/', (req, res) => {
     const token = req.headers['x-access-token'];
@@ -29,7 +57,7 @@ router.get('/', (req, res) => {
         // The User has been Authorized ********************** Get All Shifts *******
         try {
             const shifts = await shiftsBLL.getAllShifts();
-
+            
             res.send(shifts);
         } catch (error) {
             console.error(error);

@@ -1,23 +1,36 @@
 const Department = require('../models/departmentModel.js');
+const Employee = require('../models/employeeModel.js');
 
 /****************************************************************************************************************************************/
 /************//* Work with - Departments Collection MongoDB *///     =======>     //* CRUD - Create, Read, Update, Delete *//************/
 /****************************************************************************************************************************************/
 
+// aggregate - {***** Department -->[ [employees] = array Json with All employees ] *****} -------------> {***** Employee *****}
+const aggregateAllDepartments = () => {
+    return Department.aggregate(
+        [
+            {
+                $lookup: { from: 'employees', localField: '_id', foreignField: "departmentID", as: "employees" }
+            }
+        ]
+    ).exec();;
+};
+
 // GET - Get All Departments - Read
-const getAllDepartments =  () => {
-    return Department.find();
+const getAllDepartments = () => {
+    return Department.find().populate({ path: 'Manager', model: Employee }).exec();
 };
 
 // GET - Get Department By Id - Read
 const getDepartmentById = (id) => {
-    return Department.findById({ _id: id });
+    return Department.findById({ _id: id }).populate({ path: 'Manager', model: Employee }).exec();
 };
 
 // POST - Create a Department
-const addDepartment = async (obj) => {
-    const department = new Department(obj);
+const addDepartment = async (manager_Id, obj_Dep) => {
+    const department = new Department(obj_Dep);
     await department.save();
+    await Employee.findByIdAndUpdate(manager_Id, { departmentID: department._id });
     return 'Created';
 };
 
@@ -34,6 +47,7 @@ const deleteDepartment = async (id) => {
 };
 
 module.exports = {
+    aggregateAllDepartments,
     getAllDepartments,
     getDepartmentById,
     addDepartment,

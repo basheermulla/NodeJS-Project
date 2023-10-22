@@ -1,1 +1,5752 @@
-{"actions":[{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":2},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":1},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":0},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":7},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":6},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":5},{"id":2,"maxActions":8,"date":"15/10/2023","actionsAllowed":4},{"id":1,"maxActions":8,"date":"15/10/2023","actionsAllowed":3}]}
+{
+    "actions": [
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "15/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 8,
+            "date": "17/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 76
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 75
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "19/10/2023",
+            "actionsAllowed": 74
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 73
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": null,
+            "maxActions": null,
+            "date": "20/10/2023",
+            "actionsAllowed": null
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "20/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "20/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 76
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 75
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 74
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 73
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 76
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 75
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 74
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 73
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 72
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 71
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 76
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 75
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 74
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 73
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 72
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 71
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 70
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 69
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 68
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 67
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 66
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 65
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 64
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 63
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 62
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 61
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 60
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 59
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 58
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 57
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 56
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "21/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 55
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 54
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 53
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 52
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 51
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 50
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 49
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 48
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 47
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 46
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 45
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 44
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 43
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 42
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 41
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "21/10/2023",
+            "actionsAllowed": 40
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 39
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 99
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 98
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 3,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 2,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 97
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 96
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 95
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 94
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 93
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 92
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 91
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 90
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 89
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 88
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 87
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 86
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 85
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 84
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 83
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 82
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 81
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 80
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 79
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 78
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 77
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 76
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 75
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 74
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 73
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 72
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 71
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 70
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 69
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 68
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 67
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 66
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 65
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 64
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 63
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 62
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 61
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 60
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 59
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 58
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 57
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 56
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 55
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 54
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 53
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 52
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 51
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 50
+        },
+        {
+            "id": 5,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 7
+        },
+        {
+            "id": 5,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 6
+        },
+        {
+            "id": 5,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 5
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 4
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 3
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 2
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 1
+        },
+        {
+            "id": 4,
+            "maxActions": 8,
+            "date": "22/10/2023",
+            "actionsAllowed": 0
+        },
+        {
+            "id": 1,
+            "maxActions": 100,
+            "date": "22/10/2023",
+            "actionsAllowed": 49
+        }
+    ]
+}
